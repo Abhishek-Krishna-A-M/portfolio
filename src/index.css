@@ -2,14 +2,38 @@
 @media (max-width: 640px) {
   body {
     font-size: 14px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: #0b0b0b;
   }
+
   pre {
     white-space: pre-wrap;
     word-break: break-word;
   }
+
   .terminal-container {
     width: 95%;
-    padding: 0.75rem;
+    min-height: 70vh;           
+    margin-top: 1rem;           
+    padding: 1rem;              
+    box-sizing: border-box;     
+    overflow-y: auto;
+    scrollbar-width: thin;      
+  }
+
+  .terminal-container::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .terminal-container::-webkit-scrollbar-thumb {
+    background: #00ff6690;
+    border-radius: 3px;
+  }
+
+  input,
+  textarea {
+    font-size: 14px;
   }
 }
-

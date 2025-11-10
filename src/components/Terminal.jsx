@@ -102,6 +102,6 @@ export default function Terminal() {
           prefix={awaitingPassword ? "sudo password:" : "ak@portfolio:~$"}
         />
       </div>
-    </div>
+    </div >
   );
 }
