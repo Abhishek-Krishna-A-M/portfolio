@@ -3,7 +3,7 @@ export default (
         {`
  ▄▀▄ █▄▀ ▀ ▄▀▀   ▄▀▀ █▄█ ██▀ █   █  
  █▀█ █ █   ▄██   ▄██ █ █ █▄▄ █▄▄ █▄▄
-                 AK's Portfolio Shell v1.0
+                 AK's Portfolio Shell v1.5
 
 `}
     </pre>

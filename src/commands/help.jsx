@@ -1,7 +1,7 @@
 export default (
     <div>
         <p><b>Available commands:</b></p>
-        <ul className="ml-4 list-disc">
+        <ul className="ml-4 list-none">
             <li><b>about</b> — Learn about AK</li>
             <li><b>skills</b> — See what I use to build systems</li>
             <li><b>projects</b> — Explore my work</li>

@@ -1,4 +1,26 @@
 @import "tailwindcss";
+.terminal-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-container::-webkit-scrollbar-track {
+  background: #0b0b0b; /* match bg */
+}
+
+.terminal-container::-webkit-scrollbar-thumb {
+  background: #00ff6690; /* neon green glow */
+  border-radius: 10px;
+}
+
+.terminal-container::-webkit-scrollbar-thumb:hover {
+  background: #00ff66;
+}
+
+.terminal-container {
+  scrollbar-width: thin;
+  scrollbar-color: #00ff6690 #0b0b0b;
+}
+
 @media (max-width: 640px) {
   body {
     font-size: 14px;

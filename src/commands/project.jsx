@@ -2,57 +2,92 @@ const projects = {
     sjcet: {
         title: "🧠 SJCET Event Dashboard (Internship)",
         details: [
-            "Built an event management system for college events as a backend intern.",
-            "Stack: Node.js, Supabase, Vue, Vite",
-            "Handled backend logic and admin dashboard functionality.",
+            "Built an internal event management system for college as a backend intern.",
+            "Stack: Node.js, Supabase, Vue, Vite.",
+            "Handled backend logic, database flows, and admin dashboard functionality.",
             "No public repository available.",
         ],
     },
+
     brightsmile: {
         title: "💻 BrightSmile Dental Hospital Website",
         details: [
-            "Fully responsive static website using HTML, CSS, and Bootstrap.",
-            "Includes appointment forms, doctor profiles, gallery, FAQs, and reviews.",
-            "Deployed live via Netlify.",
+            "Responsive and professional website built using HTML, CSS, Bootstrap.",
+            "Includes appointment forms, doctor profiles, reviews, FAQs, and gallery.",
+            "Fully responsive and deployed via Netlify.",
             "🔗 Live: https://brightsmile-dental-hospital.netlify.app",
             "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/DentalHospitalSite",
         ],
     },
+
     securefilelocker: {
         title: "🔐 SecureFileLocker",
         details: [
-            "Full-stack Flask web app for file & text AES encryption.",
-            "Encrypt/decrypt any file or message with password protection.",
-            "Hosted on Render, includes dark mode and responsive UI.",
+            "Full-stack Flask app for AES-encrypted file & text protection.",
+            "Allows upload, encrypt, decrypt operations with password protection.",
+            "Includes dark mode, mobile-friendly UI, and clipboard helpers.",
+            "Hosted on Render.",
             "🔗 Live: https://securefilelocker.onrender.com",
             "💻 GitHub: https://github.com/eagle4b1/SecureFileLocker",
         ],
     },
+
     httpserver: {
         title: "⚙️ HTTP Server in C",
         details: [
-            "Lightweight, multi-threaded HTTP server built from scratch in C.",
-            "Supports static sites, SPA fallback, and simple API endpoints.",
-            "Hot reload, logging, and concurrent client handling.",
+            "Fully custom multi-threaded HTTP server written in C.",
+            "Supports static sites, SPA fallback, basic API endpoints.",
+            "Features hot reload, structured logging, and concurrent client handling.",
+            "Built for learning networking, sockets, threads, and HTTP internals.",
             "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/HTTP_Server",
         ],
     },
+
     sysdash: {
         title: "📊 SysDash – Terminal System Dashboard",
         details: [
-            "Terminal-based system monitor inspired by htop and neofetch.",
-            "Real-time CPU, memory, disk, and process stats with process killer.",
-            "Built in C++ using a Neovim-style TUI interface.",
+            "Neovim-style TUI system monitor written in C++.",
+            "Shows CPU, RAM, Swap, Disk, Network stats and running processes.",
+            "Supports killing processes directly from the TUI.",
+            "Lightweight and minimal — inspired by htop + neofetch.",
             "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/sysdash",
         ],
     },
+
     uvim: {
         title: "🧠 U Vim – Custom Neovim IDE Configuration",
         details: [
-            "Custom Neovim setup built entirely in Lua for speed and extensibility.",
-            "LSP support, autocompletion, diagnostics, and Treesitter.",
-            "Uses lazy.nvim for optimized plugin management.",
+            "Custom lightweight IDE built on Neovim using Lua.",
+            "Includes LSP, autocompletion, diagnostics, Treesitter, Telescope.",
+            "Uses lazy.nvim for optimized plugin loading and fast startup.",
+            "Designed for productivity, aesthetics, and workflow efficiency.",
             "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/U_Vim",
+        ],
+    },
+
+    gpad: {
+        title: "⚡ gpad – Git-Powered Notes Manager (Go)",
+        details: [
+            "Cross-platform CLI notes manager written entirely in Go.",
+            "Stores Markdown notes with nested folder support and tree listing.",
+            "Clean terminal Markdown renderer (headings, lists, quotes, code blocks).",
+            "GitHub sync mode with auto commit → pull → push (SSH/HTTPS).",
+            "Offline mode supported; single static binary; zero dependencies.",
+            "Commands: init, view, list, rm, sync, config, uninstall.",
+            "Modular architecture: CLI, notes engine, git engine, viewer, config.",
+            "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/gpad",
+        ],
+    },
+
+    btechified: {
+        title: "📚 Btechified – Educational Platform",
+        details: [
+            "Educational platform built using React.js and Supabase.",
+            "Handled backend logic, auth flows, table creation, and DB schema design.",
+            "Implemented secure email/password login using Supabase Auth.",
+            "Created reusable backend utilities, role checks, and helper functions.",
+            "Built frontend UI components and integrated them with APIs.",
+            "💻 GitHub (frontend): https://github.com/<your-repo-here>",
         ],
     },
 };

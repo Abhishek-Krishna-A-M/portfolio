@@ -14,8 +14,12 @@ export default function Terminal() {
   const push = (node) => setOutput((prev) => [...prev, node]);
 
   useEffect(() => {
-    if (terminalRef.current)
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+    if (terminalRef.current) {
+      terminalRef.current.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [output]);
 
   const executeCommand = (raw) => {

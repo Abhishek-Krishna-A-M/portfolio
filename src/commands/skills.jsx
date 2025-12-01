@@ -1,27 +1,23 @@
 export default (
-    <pre className="text-green-400 font-mono leading-relaxed">
-        {`> LANGUAGES & OS
-  • Linux
-  • C, C++, Java, Python, JavaScript, TypeScript
-  • Bash, Lua
+  <pre className="text-green-400 font-mono leading-relaxed whitespace-pre-wrap">
+    {`[ Languages & OS ]
+  Linux, C, C++, Java, Python, Go, JS, TS, Bash, Lua
 
-> BACKEND & DATABASES
-  • Node.js, Express.js, REST APIs, Socket.io
-  • Django, Flask
-  • PostgreSQL, MongoDB, Supabase, Firebase
+[ Backend & Databases ]
+  Node.js, Express, Flask, Django, REST APIs
+  PostgreSQL, MongoDB, Supabase, Firebase
 
-> FRONTEND & UI
-  • React, Next.js, Vite
-  • HTML5, CSS3, TailwindCSS, Bootstrap
+[ Frontend & UI ]
+  React, Next.js, Vite, TailwindCSS, Bootstrap
 
-> TOOLS & DEVOPS
-  • Git, GitHub, Docker (learning)
-  • Vercel, Render, Netlify, Postman, cURL
-  • VS Code, Neovim, Canva
+[ Tools & DevOps ]
+  Git, GitHub, Docker (learning)
+  Vercel, Netlify, Render, Postman, cURL
+  VS Code, Neovim
 
-> FOCUS AREAS
-  • Backend Systems, Web Architecture
-  • Cybersecurity, Cloud Fundamentals
+[ Focus Areas ]
+  Backend Systems, Web Architecture
+  Cybersecurity, Cloud Fundamentals
 `}
-    </pre>
+  </pre>
 );
