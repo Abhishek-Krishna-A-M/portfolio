@@ -1,15 +1,17 @@
 export default function projects() {
-    const short = {
-        sjcet: "event management dashboard (internship)",
-        brightsmile: "dental hospital website (HTML/CSS/Bootstrap)",
-        securefilelocker: "AES encrypted file & text locker (Flask)",
-        httpserver: "multi-threaded HTTP server in C",
-        sysdash: "terminal system dashboard in C++",
-        uvim: "custom Neovim IDE config (Lua)",
-        gpad: "CLI notes manager powered by Git (Go)",
-        btechified: "React + Supabase educational platform",
-    };
-
+const short = {
+    sjcet: "event management dashboard (internship)",
+    brightsmile: "dental hospital website (HTML/CSS/Bootstrap)",
+    securefilelocker: "AES encrypted file & text locker (Flask)",
+    httpserver: "multi-threaded HTTP server in C",
+    sysdash: "terminal system dashboard in C++",
+    uvim: "custom Neovim IDE config (Lua)",
+    gpad: "CLI notes manager powered by Git (Go)",
+    btechified: "React + Supabase educational platform",
+    minimallauncher: "terminal-style Android launcher (Kotlin, Jetpack Compose)",
+    staffo: "staff locating system for campus (React, Supabase)",
+    artsapp: "arts fest management system (React, Supabase)",
+};
     return (
         <div>
             <p><b>Available projects:</b></p>

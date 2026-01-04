@@ -36,7 +36,7 @@ const projects = {
         title: "⚙️ HTTP Server in C",
         details: [
             "Fully custom multi-threaded HTTP server written in C.",
-            "Supports static sites, SPA fallback, basic API endpoints.",
+            "Supports static sites, SPA fallback, and basic API endpoints.",
             "Features hot reload, structured logging, and concurrent client handling.",
             "Built for learning networking, sockets, threads, and HTTP internals.",
             "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/HTTP_Server",
@@ -87,7 +87,48 @@ const projects = {
             "Implemented secure email/password login using Supabase Auth.",
             "Created reusable backend utilities, role checks, and helper functions.",
             "Built frontend UI components and integrated them with APIs.",
-            "💻 GitHub (frontend): https://github.com/<your-repo-here>",
+            "Repository private / internal.",
+        ],
+    },
+
+    minimallauncher: {
+        title: "📱 Minimal Launcher – Terminal-Style Android Launcher",
+        details: [
+            "Terminal-style Android launcher built with Kotlin and Jetpack Compose.",
+            "Optimized for speed and minimal memory usage (~15–20 MB RAM).",
+            "Keyboard-first CLI interface with custom lightweight fuzzy search engine.",
+            "Supports app management, direct dialing, and system utility commands.",
+            "Event-driven architecture with no background services or analytics.",
+            "Uses global app cache and tiered contact loading for low latency.",
+            "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/minimal-launcher",
+        ],
+    },
+
+    staffo: {
+        title: "🧭 Staffo – Staff Locating System (JECC)",
+        details: [
+            "Web-based staff locating system built using React and Supabase.",
+            "Helps users find faculty locations, availability, and schedules on campus.",
+            "Backend logic implemented using Supabase Edge Functions.",
+            "Designed database schema for staff profiles, rooms, schedules, availability.",
+            "Search and filter staff by name, department, or subject.",
+            "Admin interface for managing staff data with real-time updates.",
+            "🔗 Live: https://staffoapp.vercel.app/",
+            "💻 GitHub: https://github.com/Abhishek-Krishna-A-M/Staffo",
+        ],
+    },
+
+    artsapp: {
+        title: "🎭 Arts App 2025 – Arts Fest Management System (JECC)",
+        details: [
+            "Web application built using React and Supabase for college arts fest.",
+            "Handles participant registration, authentication, and event information.",
+            "Implemented Supabase authentication and secure session handling.",
+            "Designed database tables for participants, events, stages, and results.",
+            "Backend logic for publishing results and real-time event updates.",
+            "Role-based access for administrative operations.",
+            "Repository private / internal.",
+            "🔗 Live: https://arts-app-25.vercel.app/",
         ],
     },
 };
