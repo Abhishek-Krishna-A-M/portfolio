@@ -57,6 +57,7 @@ export default function InputLine({ onCommand, mask = false, prefix = "ak@portfo
       <b className="mr-2">{prefix}</b>
       <input
         ref={ref}
+        autoFocus
         type={mask ? "password" : "text"}
         autoComplete="off"
         spellCheck="false"

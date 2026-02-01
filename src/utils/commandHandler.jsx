@@ -2,10 +2,9 @@ import about from "../commands/about";
 import help from "../commands/help";
 import skills from "../commands/skills";
 import contact from "../commands/contact";
-import photo from "../commands/photo";
 import projects from "../commands/projects";
 import showProject from "../commands/project";
-import sudoPhoto from "../commands/sudoPhoto";
+import SudoPhoto from "../commands/sudoPhoto";
 
 const commands = {
   about,
@@ -13,8 +12,8 @@ const commands = {
   skills,
   projects,
   contact,
-  photo,
-  "sudo photo": sudoPhoto,
+  photo: () => <SudoPhoto isSudo={false} />,
+  "sudo photo": () => <SudoPhoto isSudo={true} />,
 };
 
 export default function handleCommand(cmd) {
@@ -27,13 +26,7 @@ export default function handleCommand(cmd) {
 
   const command = commands[trimmed];
 
-  if (!command) {
-    return <p>Command not found. Type 'help'.</p>;
-  }
+  if (!command) return null; // Let Terminal handle 'not found'
 
-  if (typeof command === "function") {
-    return command();
-  }
-
-  return command;
+  return typeof command === "function" ? command() : command;
 }

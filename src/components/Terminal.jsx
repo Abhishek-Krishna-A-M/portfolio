@@ -2,18 +2,27 @@ import { useState, useRef, useEffect } from "react";
 import InputLine from "./InputLine";
 import CommandOutput from "./CommandOutput";
 import handleCommand from "../utils/commandHandler";
-import showProject from "../commands/project"; // <– use this directly
+import showProject from "../commands/project"; 
 import banner from "../commands/banner";
+import SudoPhoto from "../commands/sudoPhoto";
 
 export default function Terminal() {
   const [output, setOutput] = useState([]);
   const [awaitingPassword, setAwaitingPassword] = useState(false);
   const [pendingSudoCmd, setPendingSudoCmd] = useState(null);
   const terminalRef = useRef(null);
+  const inputRef = useRef(null);
+
+  const handleTerminalClick = () => {
+    if(inputRef.current){
+      inputRef.current.focus();
+    }
+  };
 
   const push = (node) => setOutput((prev) => [...prev, node]);
 
   useEffect(() => {
+    inputRef.current?.focus();
     if (terminalRef.current) {
       terminalRef.current.scrollTo({
         top: terminalRef.current.scrollHeight,
@@ -22,75 +31,60 @@ export default function Terminal() {
     }
   }, [output]);
 
-  const executeCommand = (raw) => {
+const executeCommand = (raw) => {
     const cmd = (raw || "").trim();
-    const parts = cmd.split(" ").filter(Boolean);
-    const base = parts[0]?.toLowerCase();
-    const args = parts.slice(1);
+    const base = cmd.toLowerCase();
 
-    // clear command
-    if (!awaitingPassword && base === "clear") {
-      setOutput([]);
-      return;
-    }
-
-    // handle password entry
+    // 1. Password Phase
     if (awaitingPassword) {
       const masked = "*".repeat(cmd.length || 1);
       push({ node: <p>sudo password: {masked}</p> });
 
-      setTimeout(() => {
-        if (pendingSudoCmd === "sudo photo") {
-          const sudoResult = handleCommand("sudo photo");
-          push({ node: sudoResult });
-        } else {
-          push({
-            node: (
-              <pre>{`do you really think I’ll give you root privileges? pft... 😏`}</pre>
-            ),
-          });
-        }
-        setAwaitingPassword(false);
-        setPendingSudoCmd(null);
-      }, 400);
-      return;
+setTimeout(() => {
+    if (cmd === "akiscool") {
+      if (pendingSudoCmd === "sudo photo") {
+        push({ node: <SudoPhoto isSudo={true} /> });
+      } else {
+        push({ node: <p className="text-green-500">Authentication successful.</p> });
+      }
+    } else {
+      push({ 
+        node: <p className="text-red-500 font-bold">sudo: incorrect password attempt</p> 
+      });
     }
 
-    // detect sudo
-    if (base === "sudo") {
+    setAwaitingPassword(false);
+    setPendingSudoCmd(null);
+  }, 600);
+  return;
+}
+
+    // 2. Clear
+    if (base === "clear") { setOutput([]); return; }
+
+    // 3. Detect Sudo Photo
+    if (base === "sudo photo") {
       push({ node: <p><b>ak@portfolio:~$</b> {cmd}</p> });
       setAwaitingPassword(true);
-      setPendingSudoCmd(cmd);
+      setPendingSudoCmd("sudo photo");
       return;
     }
 
-    // project command (multi-word)
-    if (base === "project") {
-      push({
-        node: (
-          <div>
-            <p><b>ak@portfolio:~$</b> {cmd}</p>
-            <div>{showProject(args)}</div>
-          </div>
-        ),
-      });
-      return;
-    }
-
-    // normal one-word commands (delegated to handler)
-    const result = handleCommand(base);
+    const result = handleCommand(cmd); 
+    
     push({
       node: (
         <div>
           <p><b>ak@portfolio:~$</b> {cmd}</p>
-          <div>{result}</div>
+          <div>{result || <p>Command not found. Type 'help'.</p>}</div>
         </div>
       ),
     });
   };
 
   return (
-    <div className="terminal-container w-full max-w-2xl bg-black/80 p-6 rounded-xl shadow-[0_0_15px_#00ff66] overflow-auto">
+    <div className="terminal-container w-full max-w-2xl bg-black/80 p-6 rounded-xl shadow-[0_0_15px_#00ff66] overflow-auto"
+    onClick={handleTerminalClick}>
       <div className="mb-4 text-center">{banner}</div>
 
       <div ref={terminalRef} className="min-h-[300px] max-h-[60vh] overflow-y-auto pb-4">
@@ -101,6 +95,7 @@ export default function Terminal() {
         ))}
 
         <InputLine
+          inputRef={inputRef}
           onCommand={executeCommand}
           mask={awaitingPassword}
           prefix={awaitingPassword ? "sudo password:" : "ak@portfolio:~$"}

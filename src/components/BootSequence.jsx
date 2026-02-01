@@ -8,16 +8,16 @@ export default function BootSequence({ onFinish }) {
       <TypeAnimation
         sequence={[
           "Initializing ak@portfolio...",
-          800,
+          500,
           "Loading shell modules...",
-          800,
+          500,
           "Access granted.",
-          700,
+          500,
           "Type 'help' to begin.",
           1000,
           onFinish,
         ]}
-        speed={50}
+        speed={70}
         repeat={0}
         cursor={true}
       />
