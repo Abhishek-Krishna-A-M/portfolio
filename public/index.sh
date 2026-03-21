@@ -1,50 +1,129 @@
 #!/bin/bash
 
-G='\033[0;32m' # Green
-C='\033[0;36m' # Cyan
-Y='\033[1;33m' # Yellow
-B='\033[0;34m' # Blue
-NC='\033[0m'    # No Color
+# ─────────────────────────────────────────────────────────────
+#  ak's portfolio shell — connection script
+#  github.com/Abhishek-Krishna-A-M
+# ─────────────────────────────────────────────────────────────
 
-step() {
-    echo -ne "${C}[ WAIT ]${NC} $1..."
-    sleep 0.4
-    echo -e "\r${G}[  OK  ]${NC} $1   "
+RESET='\033[0m'
+BOLD='\033[1m'
+DIM='\033[2m'
+WHITE='\033[0;97m'
+MUTED='\033[0;90m'
+ACCENT='\033[0;37m'    # near-white, void theme
+GREEN='\033[0;32m'
+RED='\033[0;31m'
+CYAN='\033[0;36m'
+
+ok()   { echo -e "  ${ACCENT}[ ok ]${RESET}  ${DIM}$1${RESET}"; }
+fail() { echo -e "  ${RED}[fail]${RESET}  $1"; }
+dim()  { echo -e "${MUTED}$1${RESET}"; }
+sep()  { echo -e "${MUTED}──────────────────────────────────────────────────────${RESET}"; }
+
+typeout() {
+    local text="$1"
+    local delay="${2:-0.03}"
+    for ((i=0; i<${#text}; i++)); do
+        printf "%s" "${text:$i:1}"
+        sleep "$delay"
+    done
+    echo
 }
 
 clear
-echo -e "${Y}Initializing remote session: abhishekkrishna.vercel.app${NC}"
-echo -e "${B}------------------------------------------------------${NC}"
 
-step "Handshaking with server"
-step "Loading kernel modules"
-step "Syncing AI/Cyber/System datasets"
-step "Finalizing profile injection"
+# ── BIOS line ────────────────────────────────────────────────
+echo ""
+dim "  BIOS v2.0  —  AK Systems  —  Laptop"
+dim "  CPU: Intel Core i5  |  RAM: 8G  |  ARCH: x86_64"
+echo ""
 
-echo -e "\n${G}Success: Terminal session established.${NC}\n"
+sleep 0.2
+
+# ── Boot sequence ────────────────────────────────────────────
+ok "loading kernel 6.14.0-arch1-1"
+sleep 0.18
+ok "mounting filesystem (ext4)"
+sleep 0.15
+ok "starting bspwm"
+sleep 0.12
+ok "starting sxhkd"
+sleep 0.12
+ok "loading alacritty"
+sleep 0.15
+ok "syncing remote session: abhishekkrishna.vercel.app"
+sleep 0.20
+ok "importing projects.db"
+sleep 0.15
+ok "indexing skills manifest"
+sleep 0.18
+ok "spawning portfolio shell v2.0"
+sleep 0.25
+
+echo ""
+dim "  Arch Linux 6.14.0-arch1-1 (tty1)"
+sleep 0.3
+dim "  archbox login: ak"
+sleep 0.4
+dim "  Last login: $(date)"
 sleep 0.3
 
-echo -e "${G}"
-cat << "EOF"
-                     █████╗ ██╗  ██╗
-                    ██╔══██╗██║ ██╔╝
-                    ███████║█████╔╝ 
-                    ██╔══██║██╔═██╗ 
-                    ██║  ██║██║  ██╗
-                    ╚═╝  ╚═╝╚═╝  ╚═╝
-           >> ABHISHEK KRISHNA | DEV & SEC <<
+echo ""
+
+# ── Banner ───────────────────────────────────────────────────
+echo -e "${ACCENT}"
+cat << 'EOF'
+    ▄▀▄ █▄▀   ▄▀▀ █▄█ ██▀ █   █
+    █▀█ █ █   ▄██ █ █ █▄▄ █▄▄ █▄▄
 EOF
-echo -e "${NC}"
+echo -e "${RESET}"
 
-echo -e "${B}┌─────────────────────────────────────────────────────────┐${NC}"
-echo -e "${B}│${NC}  ${Y}IDENT:${NC}  AK-CORE-v2.0X                                 ${B}│${NC}"
-echo -e "${B}├─────────────────────────────────────────────────────────┤${NC}"
-echo -e "${B}│${NC}  ${C}Role:${NC}   Backend-focused Full-Stack Developer        ${B}│${NC}"
-echo -e "${B}│${NC}  ${C}Tech:${NC}   Systems, AI, Cybersecurity                  ${B}│${NC}"
-echo -e "${B}│${NC}  ${C}OS:${NC}     Linux                                       ${B}│${NC}"
-echo -e "${B}│${NC}  ${C}Editor:${NC} Neovim (v0.10+)                             ${B}│${NC}"
-echo -e "${B}│${NC}  ${C}URL:${NC}    https://abhishekkrishna.vercel.app          ${B}│${NC}"
-echo -e "${B}└─────────────────────────────────────────────────────────┘${NC}"
+sleep 0.2
 
-echo -e "\n${Y}Tip: Visit the site to explore my projects & experiments.${NC}"
-echo -e "${G}Session terminated.${NC}\n"
+# ── Identity card ────────────────────────────────────────────
+sep
+echo -e "  ${BOLD}${WHITE}ABHISHEK KRISHNA A.M${RESET}"
+echo -e "  ${MUTED}Backend & Systems Engineer${RESET}"
+sep
+
+echo ""
+echo -e "  ${ACCENT}os${RESET}       Arch Linux (btw)"
+echo -e "  ${ACCENT}wm${RESET}       bspwm"
+echo -e "  ${ACCENT}shell${RESET}    bash"
+echo -e "  ${ACCENT}editor${RESET}   Neovim"
+echo -e "  ${ACCENT}lang${RESET}     C  C++  Go  Python  JS  Bash  Lua"
+echo -e "  ${ACCENT}url${RESET}      https://abhishekkrishna.vercel.app"
+echo ""
+
+sep
+
+# ── Featured projects ────────────────────────────────────────
+echo ""
+echo -e "  ${MUTED}[ featured projects ]${RESET}"
+echo ""
+echo -e "  ${ACCENT}⚙${RESET}  http-server       multi-threaded HTTP/1.1 server — C"
+echo -e "  ${ACCENT}▓${RESET}  sysdash           TUI system monitor — C++"
+echo -e "  ${ACCENT}›${RESET}  gpad              git-powered notes manager — Go"
+echo -e "  ${ACCENT}□${RESET}  minimal-launcher  terminal-style Android launcher — Kotlin"
+echo ""
+
+sep
+
+# ── Links ────────────────────────────────────────────────────
+echo ""
+echo -e "  ${MUTED}github${RESET}    github.com/Abhishek-Krishna-A-M"
+echo -e "  ${MUTED}linkedin${RESET}  linkedin.com/in/abhishek-krishna-a-m-137895328"
+echo -e "  ${MUTED}email${RESET}     abhishekkrishna2k6@gmail.com"
+echo ""
+
+sep
+
+echo ""
+
+# ── Closing line ─────────────────────────────────────────────
+typeout "  visit the portfolio shell → abhishekkrishna.vercel.app" 0.025
+echo ""
+dim "  type 'help' once inside. try 'panic' if you're feeling adventurous."
+echo ""
+dim "  [ session ready ]"
+echo ""
