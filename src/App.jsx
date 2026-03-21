@@ -1,19 +1,13 @@
 import { useState } from "react";
+import { ThemeProvider } from "./themes/ThemeContext";
 import BootSequence from "./components/BootSequence";
 import Terminal from "./components/Terminal";
 
-function App() {
+export default function App() {
   const [booted, setBooted] = useState(false);
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#0d1117] text-green-400 font-mono">
-      {!booted ? (
-        <BootSequence onFinish={() => setBooted(true)} />
-      ) : (
-        <Terminal />
-      )}
-    </div>
+    <ThemeProvider>
+      {booted ? <Terminal /> : <BootSequence onFinish={() => setBooted(true)} />}
+    </ThemeProvider>
   );
 }
-
-export default App;

@@ -1,0 +1,341 @@
+export const filesystem = {
+  "/": { type: "dir", children: ["home", "etc", "proc", "usr", "var"] },
+
+  "/home": { type: "dir", children: ["ak"] },
+  "/home/ak": {
+    type: "dir",
+    children: ["about.txt", "skills.txt", "contact.txt", "secret.txt", ".config", ".bashrc", "projects", "README.md"],
+  },
+
+  "/home/ak/about.txt": {
+    type: "file",
+    content: `NAME    : Abhishek Krishna A.M
+ROLE    : Backend & Systems Engineer
+OS      : Arch Linux (yes, really)
+WM      : bspwm
+SHELL   : bash
+EDITOR  : Neovim
+MACHINE : Laptop
+──────────────────────────────────────
+I build systems, not templates.
+
+Work close to the metal.
+Believe real performance comes from
+understanding what happens under the hood.
+
+  → Linux internals & low-level systems
+  → Backend architecture that actually scales
+  → Tools that do one thing perfectly
+
+Offline:
+  → Home workouts
+  → Ricing bspwm setups at midnight
+  → Reading kernel source for fun (send help)
+──────────────────────────────────────
+$ skills   $ projects   $ contact`,
+  },
+
+  "/home/ak/skills.txt": {
+    type: "file",
+    content: `[ Languages ]
+  C  C++  Go  Python  Java
+  JavaScript  TypeScript  Bash  Lua  Kotlin
+
+[ Backend ]
+  Node.js · Express · Flask · Django
+  REST APIs · WebSockets
+  PostgreSQL · MongoDB · Supabase · Firebase
+
+[ Frontend ]
+  React · Next.js · Vite · TailwindCSS
+  Bootstrap · Jetpack Compose
+
+[ Systems & Tools ]
+  Linux · bspwm · Neovim · Git · Docker
+  Vercel · Netlify · Render
+  GDB · Valgrind · strace · perf
+
+[ Focus ]
+  Backend Architecture
+  Systems Programming
+  Android Development
+  Cybersecurity fundamentals`,
+  },
+
+  "/home/ak/contact.txt": {
+    type: "file",
+    content: `──────────────────────────────────────
+  email     abhishekkrishna2k6@gmail.com
+  github    github.com/Abhishek-Krishna-A-M
+  linkedin  linkedin.com/in/abhishek-krishna-a-m-137895328
+  whatsapp  +918075656775
+──────────────────────────────────────
+  sudo message "hi" → opens WhatsApp directly`,
+  },
+
+  "/home/ak/README.md": {
+    type: "file",
+    content: `# ak's portfolio shell v2
+
+  A terminal portfolio because I live in one.
+
+  Type 'help' to see what's available.
+  Type 'panic' if you're feeling adventurous.
+
+  Source: github.com/Abhishek-Krishna-A-M/portfolio`,
+  },
+
+  "/home/ak/.bashrc": {
+    type: "file",
+    content: `# ~/.bashrc — ak's actual config (mostly)
+export EDITOR=nvim
+export VISUAL=nvim
+export TERMINAL=alacritty
+export PATH="$HOME/.local/bin:$PATH"
+
+# aliases
+alias ll='ls -la --color=auto'
+alias gs='git status'
+alias gc='git commit'
+alias vim='nvim'
+alias please='sudo'
+alias ports='ss -tulpn'
+alias mem='free -h'
+alias cpu='cat /proc/cpuinfo | grep "model name" | head -1'
+
+# bspwm helpers
+alias bsp='bspc'
+alias reload='bspc wm -r'
+
+# prompt
+PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '
+
+# start bspwm if on tty1
+[[ $(tty) = /dev/tty1 ]] && exec startx`,
+  },
+
+  "/home/ak/.config": {
+    type: "dir",
+    children: ["bspwm", "sxhkd", "nvim", "alacritty"],
+  },
+  "/home/ak/.config/bspwm": { type: "dir", children: ["bspwmrc"] },
+  "/home/ak/.config/bspwm/bspwmrc": {
+    type: "file",
+    content: `#!/bin/sh
+# bspwmrc — ak's config
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config border_width         2
+bspc config window_gap           8
+bspc config split_ratio          0.52
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+# colors
+bspc config normal_border_color  "#1a1a1a"
+bspc config active_border_color  "#e2e8f0"
+bspc config focused_border_color "#e2e8f0"
+
+sxhkd &`,
+  },
+  "/home/ak/.config/sxhkd": { type: "dir", children: ["sxhkdrc"] },
+  "/home/ak/.config/sxhkd/sxhkdrc": {
+    type: "file",
+    content: `# sxhkdrc — keybindings
+
+# terminal
+super + Return
+  alacritty
+
+# launcher
+super + d
+  dmenu_run
+
+# close window
+super + shift + q
+  bspc node -c
+
+# focus direction
+super + {h,j,k,l}
+  bspc node -f {west,south,north,east}
+
+# move window
+super + shift + {h,j,k,l}
+  bspc node -s {west,south,north,east}`,
+  },
+  "/home/ak/.config/nvim": { type: "dir", children: ["init.lua"] },
+  "/home/ak/.config/nvim/init.lua": {
+    type: "file",
+    content: `-- init.lua — U Vim config
+-- github.com/Abhishek-Krishna-A-M/U_Vim
+
+require("core.options")
+require("core.keymaps")
+require("core.lazy")   -- lazy.nvim plugin manager
+
+-- LSP, treesitter, telescope all loaded via lazy
+-- startup time: ~45ms`,
+  },
+  "/home/ak/.config/alacritty": { type: "dir", children: ["alacritty.toml"] },
+  "/home/ak/.config/alacritty/alacritty.toml": {
+    type: "file",
+    content: `[window]
+padding = { x = 12, y = 10 }
+opacity = 0.95
+decorations = "None"
+
+[font]
+normal = { family = "IBM Plex Mono", style = "Regular" }
+size = 12.0
+
+[colors.primary]
+background = "#000000"
+foreground = "#e2e8f0"
+
+[colors.cursor]
+cursor = "#e2e8f0"`,
+  },
+
+  "/home/ak/projects": {
+    type: "dir",
+    children: ["http-server/", "sysdash/", "gpad/", "minimal-launcher/", "staffo/", "others/"],
+  },
+  "/home/ak/projects/http-server/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/http-server/README.md": {
+    type: "file",
+    content: "Multi-threaded HTTP/1.1 server in C. See: project httpserver",
+  },
+  "/home/ak/projects/sysdash/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/sysdash/README.md": {
+    type: "file",
+    content: "TUI system monitor in C++. See: project sysdash",
+  },
+  "/home/ak/projects/gpad/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/gpad/README.md": {
+    type: "file",
+    content: "Git-powered CLI notes manager in Go. See: project gpad",
+  },
+  "/home/ak/projects/minimal-launcher/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/minimal-launcher/README.md": {
+    type: "file",
+    content: "Terminal-style Android launcher. See: project minimallauncher",
+  },
+  "/home/ak/projects/staffo/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/staffo/README.md": {
+    type: "file",
+    content: "Staff locating system for campus. See: project staffo",
+  },
+  "/home/ak/projects/others/": { type: "dir", children: ["list.txt"] },
+  "/home/ak/projects/others/list.txt": {
+    type: "file",
+    content: "securefilelocker · brightsmile · btechified · artsapp · sjcet\nType 'projects' for full list.",
+  },
+
+  "/home/ak/secret.txt": {
+    type: "file",
+    secret: true,
+    content: `CLASSIFIED — root access required
+
+[ DECRYPTED ]
+─────────────────────────────────────────
+  Almost quit coding at 17.
+
+  Then I built an HTTP server in C.
+  Understood sockets. Understood TCP.
+  Understood why the internet works.
+
+  That was it. That was the moment.
+
+  Currently:
+  → Building something in Go. Soon.
+  → Wrote an OS scheduler sim. For fun.
+  → bspwm config is at peak rice level.
+
+  I daily-drive Arch on a laptop.
+  I have recovered from grub corruption
+  at 2am more times than I can count.
+
+  Hire me before someone else does.
+─────────────────────────────────────────`,
+  },
+
+  "/etc": { type: "dir", children: ["hostname", "os-release", "pacman.conf"] },
+  "/etc/hostname": { type: "file", content: "portfolio" },
+  "/etc/os-release": {
+    type: "file",
+    content: `NAME="Arch Linux"
+PRETTY_NAME="Arch Linux"
+ID=arch
+BUILD_ID=rolling
+ANSI_COLOR="38;2;23;147;209"
+HOME_URL="https://archlinux.org/"
+DOCUMENTATION_URL="https://wiki.archlinux.org/"`,
+  },
+  "/etc/pacman.conf": {
+    type: "file",
+    content: `# /etc/pacman.conf
+[options]
+HoldPkg     = pacman glibc
+Architecture = auto
+Color
+ParallelDownloads = 5
+
+[core]
+Include = /etc/pacman.d/mirrorlist
+
+[extra]
+Include = /etc/pacman.d/mirrorlist
+
+[multilib]
+Include = /etc/pacman.d/mirrorlist`,
+  },
+
+  "/proc": { type: "dir", children: ["cpuinfo", "meminfo", "version"] },
+  "/proc/cpuinfo": {
+    type: "file",
+    content: `processor       : 0
+vendor_id       : GenuineIntel
+model name      : Intel Core i5 (laptop)
+cpu MHz         : 2400.000
+cache size      : 6144 KB
+flags           : fpu vme de pse tsc msr ...`,
+  },
+  "/proc/meminfo": {
+    type: "file",
+    content: `MemTotal:        8192000 kB
+MemFree:         3241000 kB
+MemAvailable:    5102000 kB
+Buffers:          312000 kB
+Cached:          1843000 kB`,
+  },
+  "/proc/version": {
+    type: "file",
+    content: "Linux version 6.14.0-arch1-1 (builduser@buildhost) (gcc 14.2.1) #1 SMP PREEMPT_DYNAMIC",
+  },
+
+  "/usr": { type: "dir", children: ["bin"] },
+  "/usr/bin": { type: "dir", children: ["nvim", "git", "gcc", "go", "node", "python3", "bspwm", "pacman"] },
+  "/usr/bin/nvim": { type: "file", content: "NVIM v0.11.0" },
+  "/usr/bin/git": { type: "file", content: "git version 2.49.0" },
+  "/usr/bin/gcc": { type: "file", content: "gcc (GCC) 14.2.1 20250207" },
+  "/usr/bin/go": { type: "file", content: "go version go1.24.2 linux/amd64" },
+  "/usr/bin/node": { type: "file", content: "v22.14.0" },
+  "/usr/bin/python3": { type: "file", content: "Python 3.12.9" },
+  "/usr/bin/bspwm": { type: "file", content: "bspwm version 0.9.10" },
+  "/usr/bin/pacman": { type: "file", content: "Pacman v7.0.0 - libalpm v15.0.0" },
+
+  "/var": { type: "dir", children: ["log"] },
+  "/var/log": { type: "dir", children: ["pacman.log"] },
+  "/var/log/pacman.log": {
+    type: "file",
+    content: `[2025-03-20] [PACMAN] starting full system upgrade
+[2025-03-20] [ALPM] upgraded linux (6.13.0 -> 6.14.0)
+[2025-03-20] [ALPM] upgraded neovim (0.10.4 -> 0.11.0)
+[2025-03-20] [ALPM] upgraded go (1.24.1 -> 1.24.2)
+[2025-03-20] [ALPM] upgraded git (2.48.1 -> 2.49.0)
+[2025-03-21] [PACMAN] Running 'pacman -Syu'`,
+  },
+};
+
+export default filesystem;

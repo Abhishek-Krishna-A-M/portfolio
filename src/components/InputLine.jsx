@@ -1,90 +1,102 @@
-import { useState, useRef } from "react";
+import { useState, useRef, forwardRef, useImperativeHandle } from "react";
+import { useTheme } from "../themes/ThemeContext";
 
-export default function InputLine({ onCommand, mask = false, prefix = "ak@portfolio:~$" }) {
-  const [value, setValue] = useState("");
-  const [lastPress, setLastPress] = useState(0);
-  const [enterCount, setEnterCount] = useState(0);
-  const ref = useRef(null);
+const COMPLETIONS = [
+  "about", "skills", "projects", "project ", "contact", "help",
+  "ls", "cat ", "cd ", "tree", "pwd",
+  "neofetch", "uptime", "history", "clear", "panic",
+  "theme ", "theme void", "theme gruvbox", "theme nord", "theme hacker",
+  "sudo ", "sudo cat ", "sudo message ", "sudo photo", "sudo ego",
+  "github", "whoami", "echo ", "date", "uname -a",
+  "cat ~/.bashrc", "cat ~/.config/bspwm/bspwmrc",
+  "cat /home/ak/secret.txt", "ls /home/ak",
+];
+
+function autocomplete(input) {
+  if (!input) return input;
+  const lower = input.toLowerCase();
+  const match = COMPLETIONS.find((c) => c.toLowerCase().startsWith(lower));
+  return match || input;
+}
+
+const InputLine = forwardRef(function InputLine(
+  { onCommand, mask = false, prefix, disabled = false, value, onChange },
+  ref
+) {
+  const { theme } = useTheme();
+  const inputRef = useRef(null);
+  const lastEnter = useRef(0);
+
+  useImperativeHandle(ref, () => ({
+    focus: () => inputRef.current?.focus(),
+  }));
+
   const handleKeyDown = (e) => {
-
     if (e.key === "Tab") {
       e.preventDefault();
-      const auto = getAutocomplete(value.trim());
-      setValue(auto);
+      const completed = autocomplete(value.trim());
+      if (completed !== value) onChange(completed);
       return;
     }
-
     if (e.key === "Enter") {
       const now = Date.now();
-      const diff = now - lastPress;
-
-      if (diff < 450) {
-        const auto = getAutocomplete(value.trim());
-        if (auto !== value.trim()) {
-          setValue(auto);
-          setLastPress(0);
-          return;
-        }
+      if (now - lastEnter.current < 380) {
+        // double enter — autocomplete on mobile
+        const completed = autocomplete(value.trim());
+        if (completed !== value.trim()) { onChange(completed); lastEnter.current = 0; return; }
       }
-
+      lastEnter.current = now;
       onCommand(value);
-      setValue("");
-      setLastPress(now);
+      return;
     }
-  };
-
-  const handleKeyUp = (e) => {
-    if (e.key !== "Enter") return;
-
-    setEnterCount((prev) => {
-      if (prev === 0) {
-        setTimeout(() => setEnterCount(0), 400); // reset window
-        return 1;
-      }
-
-      const auto = getAutocomplete(value.trim());
-      if (auto !== value.trim()) {
-        setValue(auto);
-        return 0;
-      }
-
-      return 0;
-    });
+    if (e.key === "ArrowUp")   { e.preventDefault(); onCommand("__UP__");   return; }
+    if (e.key === "ArrowDown") { e.preventDefault(); onCommand("__DOWN__"); return; }
   };
 
   return (
-    <div className="flex items-center">
-      <b className="mr-2">{prefix}</b>
+    <div style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "8px",
+      fontFamily: theme.fontFamily,
+      fontSize: "inherit",
+      padding: "1px 0",
+    }}>
+      <span style={{
+        color: theme.prompt,
+        fontWeight: 700,
+        whiteSpace: "nowrap",
+        userSelect: "none",
+        letterSpacing: "0.01em",
+      }}>
+        {prefix}
+      </span>
       <input
-        ref={ref}
-        autoFocus
+        ref={inputRef}
         type={mask ? "password" : "text"}
         autoComplete="off"
-        spellCheck="false"
+        autoCorrect="off"
+        autoCapitalize="off"
+        spellCheck={false}
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        disabled={disabled}
+        onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
-        onKeyUp={handleKeyUp}
-        className="bg-transparent flex-1 outline-none text-green-400 placeholder:text-green-600"
+        style={{
+          flex: 1,
+          background: "transparent",
+          border: "none",
+          outline: "none",
+          color: theme.text,
+          fontFamily: theme.fontFamily,
+          fontSize: "inherit",
+          caretColor: theme.cursor,
+          letterSpacing: "0.01em",
+          minWidth: 0,
+        }}
       />
     </div>
   );
-}
+});
 
-function getAutocomplete(input) {
-  if (!input) return input;
-
-  const cmds = [
-    "about",
-    "help",
-    "skills",
-    "projects",
-    "project",
-    "contact",
-    "photo",
-    "sudo photo",
-  ];
-
-  const match = cmds.find((c) => c.startsWith(input.toLowerCase()));
-  return match || input;
-}
+export default InputLine;

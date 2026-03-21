@@ -1,61 +1,27 @@
 @import "tailwindcss";
-.terminal-container::-webkit-scrollbar {
-  width: 6px;
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  height: 100%;
+  background: #000;
+  font-family: 'IBM Plex Mono', 'Courier New', monospace;
 }
 
-.terminal-container::-webkit-scrollbar-track {
-  background: #0b0b0b; /* match bg */
-}
+body { overflow-x: hidden; }
 
-.terminal-container::-webkit-scrollbar-thumb {
-  background: #00ff6690; /* neon green glow */
-  border-radius: 10px;
-}
+/* Selection */
+::selection { background: var(--accent, #e2e8f0); color: #000; }
 
-.terminal-container::-webkit-scrollbar-thumb:hover {
-  background: #00ff66;
-}
+/* Scrollbar — invisible until hover */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border, rgba(255,255,255,0.08)); border-radius: 2px; }
 
-.terminal-container {
-  scrollbar-width: thin;
-  scrollbar-color: #00ff6690 #0b0b0b;
-}
+/* Cursor blink */
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-@media (max-width: 640px) {
-  body {
-    font-size: 14px;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    background-color: #0b0b0b;
-  }
-
-  pre {
-    white-space: pre-wrap;
-    word-break: break-word;
-  }
-
-  .terminal-container {
-    width: 95%;
-    min-height: 70vh;           
-    margin-top: 1rem;           
-    padding: 1rem;              
-    box-sizing: border-box;     
-    overflow-y: auto;
-    scrollbar-width: thin;      
-  }
-
-  .terminal-container::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  .terminal-container::-webkit-scrollbar-thumb {
-    background: #00ff6690;
-    border-radius: 3px;
-  }
-
-  input,
-  textarea {
-    font-size: 14px;
-  }
+/* Mobile */
+@media (max-width: 600px) {
+  html { font-size: 16px; }
 }
