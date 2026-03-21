@@ -11,3 +11,5 @@ ak@portfolio:~$ projects
 ak@portfolio:~$ contact  
 ak@portfolio:~$ skills  
 ak@portfolio:~$ sudo photo
+
+sudo password is akiscool
