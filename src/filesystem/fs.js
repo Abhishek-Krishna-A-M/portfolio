@@ -99,7 +99,7 @@ $ skills    $ projects    $ contact`,
     content: `# ~/.bashrc — ak's actual config (mostly)
 export EDITOR=nvim
 export VISUAL=nvim
-export TERMINAL=alacritty
+export TERMINAL=st
 export PATH="$HOME/.local/bin:$PATH"
 
 # aliases
@@ -125,7 +125,7 @@ PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\
 
   "/home/ak/.config": {
     type: "dir",
-    children: ["bspwm", "sxhkd", "nvim", "alacritty"],
+    children: ["bspwm", "sxhkd", "nvim"],
   },
   "/home/ak/.config/bspwm": { type: "dir", children: ["bspwmrc"] },
   "/home/ak/.config/bspwm/bspwmrc": {
@@ -155,7 +155,7 @@ sxhkd &`,
 
 # terminal
 super + Return
-  alacritty
+  st
 
 # launcher
 super + d
@@ -185,25 +185,6 @@ require("core.lazy")   -- lazy.nvim plugin manager
 
 -- LSP, treesitter, telescope all loaded via lazy
 -- startup time: ~45ms`,
-  },
-  "/home/ak/.config/alacritty": { type: "dir", children: ["alacritty.toml"] },
-  "/home/ak/.config/alacritty/alacritty.toml": {
-    type: "file",
-    content: `[window]
-padding = { x = 12, y = 10 }
-opacity = 0.95
-decorations = "None"
-
-[font]
-normal = { family = "IBM Plex Mono", style = "Regular" }
-size = 12.0
-
-[colors.primary]
-background = "#000000"
-foreground = "#e2e8f0"
-
-[colors.cursor]
-cursor = "#e2e8f0"`,
   },
 
 "/home/ak/projects": {

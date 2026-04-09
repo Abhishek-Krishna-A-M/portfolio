@@ -15,7 +15,7 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 CYAN='\033[0;36m'
 
-ok()   { echo -e "  ${ACCENT}[ ok ]${RESET}  ${DIM}$1${RESET}"; }
+ok()    { echo -e "  ${ACCENT}[ ok ]${RESET}  ${DIM}$1${RESET}"; }
 fail() { echo -e "  ${RED}[fail]${RESET}  $1"; }
 dim()  { echo -e "${MUTED}$1${RESET}"; }
 sep()  { echo -e "${MUTED}──────────────────────────────────────────────────────${RESET}"; }
@@ -35,13 +35,14 @@ clear
 # ── BIOS line ────────────────────────────────────────────────
 echo ""
 dim "  BIOS v2.0  —  AK Systems  —  Laptop"
-dim "  CPU: Intel Core i5  |  RAM: 8G  |  ARCH: x86_64"
+# Updated RAM display to reflect actual capacity
+dim "  CPU: Intel Core i3  |  RAM: 4.0 GiB  |  ARTIX(S6): x86_64"
 echo ""
 
 sleep 0.2
 
 # ── Boot sequence ────────────────────────────────────────────
-ok "loading kernel 6.14.0-arch1-1"
+ok "loading kernel"
 sleep 0.18
 ok "mounting filesystem (ext4)"
 sleep 0.15
@@ -49,7 +50,7 @@ ok "starting bspwm"
 sleep 0.12
 ok "starting sxhkd"
 sleep 0.12
-ok "loading alacritty"
+ok "loading st"
 sleep 0.15
 ok "syncing remote session: abhishekkrishna.vercel.app"
 sleep 0.20
@@ -61,7 +62,7 @@ ok "spawning portfolio shell v2.0"
 sleep 0.25
 
 echo ""
-dim "  Arch Linux 6.14.0-arch1-1 (tty1)"
+dim "  Linux artixlinux 6.19.9-zen1-1-zen (tty1)"
 sleep 0.3
 dim "  archbox login: ak"
 sleep 0.4
@@ -87,12 +88,14 @@ echo -e "  ${MUTED}Backend & Systems Engineer${RESET}"
 sep
 
 echo ""
-echo -e "  ${ACCENT}os${RESET}       Arch Linux (btw)"
-echo -e "  ${ACCENT}wm${RESET}       bspwm"
-echo -e "  ${ACCENT}shell${RESET}    bash"
-echo -e "  ${ACCENT}editor${RESET}   Neovim"
-echo -e "  ${ACCENT}lang${RESET}     C  C++  Go  Python  JS  Bash  Lua"
-echo -e "  ${ACCENT}url${RESET}      https://abhishekkrishna.vercel.app"
+echo -e "  ${ACCENT}os${RESET}        Artix Linux(s6) (btw)"
+echo -e "  ${ACCENT}wm${RESET}        bspwm"
+echo -e "  ${ACCENT}shell${RESET}     bash"
+echo -e "  ${ACCENT}editor${RESET}    Neovim"
+echo -e "  ${ACCENT}lang${RESET}      C  C++  Go  Python  JS  Bash  Lua"
+# Added the corrected memory line here for visual flair
+echo -e "  ${ACCENT}memory${RESET}    250.60 MiB / 3.73 GiB (6.56%)"
+echo -e "  ${ACCENT}url${RESET}       https://abhishekkrishna.vercel.app"
 echo ""
 
 sep
@@ -101,19 +104,19 @@ sep
 echo ""
 echo -e "  ${MUTED}[ featured projects ]${RESET}"
 echo ""
-echo -e "  ${ACCENT}⚙${RESET}  http-server       multi-threaded HTTP/1.1 server — C"
-echo -e "  ${ACCENT}▓${RESET}  sysdash           TUI system monitor — C++"
-echo -e "  ${ACCENT}›${RESET}  gpad              git-powered notes manager — Go"
-echo -e "  ${ACCENT}□${RESET}  minimal-launcher  terminal-style Android launcher — Kotlin"
+echo -e "  ${ACCENT}⚙${RESET}  http-server        multi-threaded HTTP/1.1 server — C"
+echo -e "  ${ACCENT}▓${RESET}  sysdash            TUI system monitor — C++"
+echo -e "  ${ACCENT}›${RESET}  gpad               git-powered notes manager — Go"
+echo -e "  ${ACCENT}□${RESET}  minimal-launcher   terminal-style Android launcher — Kotlin"
 echo ""
 
 sep
 
 # ── Links ────────────────────────────────────────────────────
 echo ""
-echo -e "  ${MUTED}github${RESET}    github.com/Abhishek-Krishna-A-M"
-echo -e "  ${MUTED}linkedin${RESET}  linkedin.com/in/abhishek-krishna-a-m-137895328"
-echo -e "  ${MUTED}email${RESET}     abhishekkrishna2k6@gmail.com"
+echo -e "  ${MUTED}github${RESET}     github.com/Abhishek-Krishna-A-M"
+echo -e "  ${MUTED}linkedin${RESET}   linkedin.com/in/abhishek-krishna-a-m-137895328"
+echo -e "  ${MUTED}email${RESET}      abhishekkrishna2k6@gmail.com"
 echo ""
 
 sep
