@@ -105,20 +105,31 @@ export function handle(raw, { cwd = HOME, isSudo = false, sessionStart } = {}) {
   // ── system commands ──────────────────────────────────────────────
   if (lower === "neofetch") {
     const up = getUptime(sessionStart);
-    const lines = [
-      `         /\\          ak@portfolio`,
-      `        /  \\         ──────────────────────────`,
-      `       /\\   \\        OS:      Arch Linux x86_64`,
-      `      /  __  \\       Kernel:  6.14.0-arch1-1`,
-      `     /  (  )  \\      WM:      bspwm`,
-      `    / __|  |__\\\\     Shell:   bash`,
-      `   /.\'        \`.\\    Terminal: st`,
-      `                     Theme:   void (IBM Plex Mono)`,
-      `                     CPU: Intel(R) Core(TM) i3-5005U (4) @z`,
-      `                     Memory:  ~400MB / 3.37GB`,
-      `                     Uptime:  ${up}`,
-      "",
-      "   ████  ████  ████  ████  ████  ████  ████  ████",
+const lines = [
+      `[ak@artixlinux ~]$ fastfetch`,
+      `                   '                       ak@artixlinux`,
+      `                  'o'                      -------------`,
+      `                 'ooo'                     OS: Artix Linux x86_64`,
+      `                'ooxoo'                    Host: Aspire E5-573 (V3.72)`,
+      `               'ooxxxoo'                   Kernel: Linux 6.19.9-zen1-1-zen`,
+      `              'oookkxxoo'                  Uptime: ${up}`,
+      `             'oiioxkkxxoo'                 Packages: 558 (pacman)`,
+      `            ':;:iiiioxxxoo'                Shell: bash 5.3.9`,
+      `               \`'.;::ioxxoo'               Display: 1366x768 (15")`,
+      `          '-.      \`':;jiooo'              WM: bspwm (X11)`,
+      `         'oooio-..     \`'i:io'             Init System: s6`,
+      `        'ooooxxxxoio:,.  \`'-;'             Terminal: st 0.9.3`,
+      `       'ooooxxxxxkkxoooIi:-.  \`'           Terminal Font: Fira Code Nerd Font`,
+      `      'ooooxxxxxkkkkxoiiiiiji'             CPU: Intel(R) Core(TM) i3-5005U (4)`,
+      `     'ooooxxxxxkxxoiiii:'\`     .i'         GPU: Intel HD Graphics 5500`,
+      `    'ooooxxxxxoi:::'\`       .;ioxo'        Memory: 250.60 MiB / 3.73 GiB (6.56%)`,
+      `   'ooooxooi::'\`          .:iiixkxxo'      Swap: 161.49 MiB / 14.43 GiB`,
+      `  'ooooi:'\`                \`'';ioxxo'      Disk (/): 7.49 GiB / 903.51 GiB`,
+      ` 'i:'\`                          '':io'     Battery: 100% [AC Connected]`,
+      `'\`                                   \`'    Locale: en_US.UTF-8`,
+      ``,
+      `    ████  ████  ████  ████  ████  ████  ████  ████`,
+      `[ak@artixlinux ~]$ `,
     ];
     return [T.text(lines.join("\n"))];
   }
@@ -126,7 +137,7 @@ export function handle(raw, { cwd = HOME, isSudo = false, sessionStart } = {}) {
   if (lower === "uptime")  return [T.text(`up ${getUptime(sessionStart)}`)];
   if (lower === "whoami")  return [T.text(isSudo ? "root" : "ak")];
   if (lower === "date")    return [T.text(new Date().toString())];
-  if (lower === "uname -a") return [T.text("Linux archbox 6.14.0-arch1-1 #1 SMP PREEMPT_DYNAMIC x86_64 GNU/Linux")];
+  if (lower === "uname -a") return [T.text("Linux artixlinux 6.19.9-zen1-1-zen #1 ZEN SMP PREEMPT_DYNAMIC Tue, 24 Mar 2026 03:51:09 +0000 x86_64 GNU/Linux")];
 
   // ── theme ────────────────────────────────────────────────────────
   if (cmd === "theme") {
@@ -149,7 +160,7 @@ export function handle(raw, { cwd = HOME, isSudo = false, sessionStart } = {}) {
 
   if (cmd === "echo")     return [T.text(args.join(" "))];
   if (lower === "man")    return [T.text("RTFM. Or just type 'help'.")];
-  if (lower === "arch" || lower === "btw") return [T.ok("yes. arch. btw.")];
+  if (lower === "artix" || lower === "btw") return [T.ok("yes. artix. btw.")];
 
   if (cmd === "vim" || cmd === "nvim")
     return [T.text("this is a portfolio, not a VM.\nbut yes — nvim is the only editor.")];
@@ -179,26 +190,28 @@ export function handleSudo(subCmd) {
   if (cmd === "cat")   return handle(`cat ${args.join(" ")}`, { isSudo: true });
   if (lower === "photo") return [T.photo()];
 
-  if (lower === "ego") return [T.text(`
+if (lower === "ego") return [T.text(`
 ROOT SHELL — EGO MODULE LOADED
-─────────────────────────────────────
-  Wrote an HTTP server in C. Raw sockets.
-  No libevent. No libuv. Just read().
+────────────────────────────────────────────────────────────
+  Hand-rolled an HTTP server in C. Raw POSIX sockets.
+  Multi-threaded. Hot-reload. Zero dependencies.
+  Because abstractions are just someone else's bugs.
 
-  Built an Android launcher that uses
-  less RAM than this browser tab.
+  Built Rythva. Handled 70k requests in a single day
+  without the database breaking a sweat. 
 
-  My bspwm config has no gaps set to 8px
-  and I think about it more than I should.
+  My Android launcher runs at ~18MB RAM. 
+  Your "minimal" web app uses more than my entire OS.
 
-  Riced Arch at 2am while recovering
-  from a broken grub. Still shipped.
+  Daily driving Artix + s6. No Systemd bloat here.
+  My Neovim startup time is 45ms and I'm still trying
+  to shave off another 5ms.
 
-  Currently: building something in Go
-  that I'll push when it doesn't embarrass me.
+  Currently: Shipping Questlytics. Predicting exams 
+  while the rest of the class is still highlighting PDFs.
 
-─────────────────────────────────────
-  Arch. bspwm. Neovim. btw.`)];
+────────────────────────────────────────────────────────────
+  Artix. Art-of-Linux. CLI-first. btw.`)];
 
   if (cmd === "message") {
     const msg = args.join(" ").replace(/^["']|["']$/g, "") || "Hey AK! I saw your portfolio.";

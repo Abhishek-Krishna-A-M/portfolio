@@ -1,4 +1,30 @@
 export const projectsData = {
+  rythva: {
+    title: "Rythva",
+    icon: "🎭",
+    short: "high-traffic arts fest platform — React + Supabase",
+    featured: true,
+    details: [
+      "Real-time event management serving 70,000+ requests",
+      "Handled peak traffic of 46k during live college fest",
+      "Live status tracking (Upcoming → Live → Completed) via Supabase Realtime",
+      "Role-based access for students, coordinators, and admins",
+    ],
+    links: { live: "https://arts-app-25.vercel.app/" },
+  },
+  questlytics: {
+    title: "Questlytics",
+    icon: "🔍",
+    short: "AI exam pattern analyzer — React + Gemini",
+    featured: true,
+    details: [
+      "AI-driven platform for analyzing previous year question papers",
+      "Topic-wise breakdown and frequency analysis using Gemini API",
+      "Predictive modeling for important topics based on syllabus alignment",
+      "Secure academic data storage and auth via Supabase",
+    ],
+    links: { github: "https://github.com/Abhishek-Krishna-A-M/Questlytics" },
+  },
   httpserver: {
     title: "HTTP Server in C",
     icon: "⚙",
@@ -12,18 +38,34 @@ export const projectsData = {
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/HTTP_Server" },
   },
-  sysdash: {
-    title: "SysDash",
-    icon: "▓",
-    short: "TUI system monitor — C++",
+  yukthi: {
+    title: "Yukthi 2026",
+    icon: "🏆",
+    short: "project expo judging system — React + Postgres",
     featured: true,
     details: [
-      "Neovim-style TUI system monitor in C++",
-      "CPU, RAM, Swap, Disk, Network, running processes",
-      "Kill processes directly from the interface",
-      "Lightweight — htop philosophy, neofetch aesthetics",
+      "Two-stage evaluation system for large-scale project expos",
+      "Ranking logic computed via PostgreSQL Views for database-level consistency",
+      "Role-aware access using Supabase RPC (login_judge)",
+      "Real-time leaderboards and score distribution with Recharts",
     ],
-    links: { github: "https://github.com/Abhishek-Krishna-A-M/sysdash" },
+    links: { github: "https://github.com/Abhishek-Krishna-A-M/Yukthi-2026" },
+  },
+  staffo: {
+    title: "Staffo",
+    icon: "◉",
+    short: "automated staff intelligence — React + Supabase",
+    featured: true,
+    details: [
+      "Campus-scale availability system deployed for College Council",
+      "Deterministic 4-level status hierarchy logic (Super Status to Timetable)",
+      "Automated timetable-driven availability inference",
+      "Group-wise analysis for optimized meeting scheduling",
+    ],
+    links: {
+      live: "https://staffoapp.vercel.app/",
+      github: "https://github.com/Abhishek-Krishna-A-M/Staffo",
+    },
   },
   gpad: {
     title: "gpad",
@@ -39,6 +81,44 @@ export const projectsData = {
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/gpad" },
   },
+  apiheist: {
+    title: "API Heist",
+    icon: "🔓",
+    short: "interactive API challenge — React + Supabase",
+    featured: false,
+    details: [
+      "Level-based competitive event focusing on system communication",
+      "Progressive difficulty scaling through header and response analysis",
+      "Built for Tharang 2026 tech fest at Jyothi Engineering College",
+      "Real-time leaderboard and tie-breaking logic based on solve speed",
+    ],
+    links: { github: "https://github.com/Abhishek-Krishna-A-M/API-Heist" },
+  },
+  sysdash: {
+    title: "SysDash",
+    icon: "▓",
+    short: "TUI system monitor — C++",
+    featured: false,
+    details: [
+      "Neovim-style TUI system monitor in C++",
+      "CPU, RAM, Swap, Disk, Network, running processes",
+      "Kill processes directly from the interface",
+      "Lightweight — htop philosophy, neofetch aesthetics",
+    ],
+    links: { github: "https://github.com/Abhishek-Krishna-A-M/sysdash" },
+  },
+  sjcet: {
+    title: "SJCET Dashboard",
+    icon: "◇",
+    short: "event management — Node.js/Supabase/Vue (internship)",
+    featured: false,
+    details: [
+      "Internal event management system built during backend internship",
+      "Node.js · Supabase · Vue · Vite",
+      "Engineered backend logic, DB flows, and admin dashboard",
+    ],
+    links: {},
+  },
   minimallauncher: {
     title: "Minimal Launcher",
     icon: "□",
@@ -46,9 +126,9 @@ export const projectsData = {
     featured: false,
     details: [
       "Terminal-style Android launcher (Kotlin + Jetpack Compose)",
-      "~15–20 MB RAM — less than most web pages",
-      "Keyboard-first CLI with custom fuzzy search engine",
-      "No background services. No analytics. No bloat.",
+      "~15–20 MB RAM usage — optimized for systems-level efficiency",
+      "Keyboard-first UI with custom FZF-style fuzzy search",
+      "Event-driven architecture with zero background polling",
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/minimal-launcher" },
   },
@@ -61,25 +141,9 @@ export const projectsData = {
       "Neovim IDE config in Lua (U Vim)",
       "LSP, autocompletion, Treesitter, Telescope, diagnostics",
       "lazy.nvim — optimized loading, ~45ms startup",
-      "Built for real workflow, not for screenshots",
+      "Built for real workflow efficiency, not aesthetics alone",
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/U_Vim" },
-  },
-  staffo: {
-    title: "Staffo",
-    icon: "◉",
-    short: "campus staff locator — React + Supabase",
-    featured: false,
-    details: [
-      "Staff locating system for campus (React + Supabase)",
-      "Find faculty locations, availability, schedules",
-      "Supabase Edge Functions, real-time updates",
-      "Role-based admin interface",
-    ],
-    links: {
-      live: "https://staffoapp.vercel.app/",
-      github: "https://github.com/Abhishek-Krishna-A-M/Staffo",
-    },
   },
   securefilelocker: {
     title: "SecureFileLocker",
@@ -88,25 +152,13 @@ export const projectsData = {
     featured: false,
     details: [
       "AES-encrypted file & text protection (Flask)",
-      "Upload, encrypt, decrypt with password",
-      "Dark mode UI, clipboard helpers",
+      "Full-stack deployment managed via Termux + Ubuntu on Android",
+      "Secure client-side interactions with dark mode UI",
     ],
     links: {
       live: "https://securefilelocker.onrender.com",
       github: "https://github.com/eagle4b1/SecureFileLocker",
     },
-  },
-  artsapp: {
-    title: "Arts App 2025",
-    icon: "▲",
-    short: "arts fest management — React + Supabase",
-    featured: false,
-    details: [
-      "College arts fest system (React + Supabase)",
-      "Registration, auth, event info, results",
-      "Role-based access for admin operations",
-    ],
-    links: { live: "https://arts-app-25.vercel.app/" },
   },
   btechified: {
     title: "Btechified",
@@ -114,21 +166,9 @@ export const projectsData = {
     short: "educational platform — React + Supabase",
     featured: false,
     details: [
-      "Educational platform (React + Supabase)",
-      "Auth flows, DB schema, role checks",
-      "Supabase Auth with secure session handling",
-    ],
-    links: {},
-  },
-  sjcet: {
-    title: "SJCET Dashboard",
-    icon: "◇",
-    short: "event management — Node.js/Supabase/Vue (internship)",
-    featured: false,
-    details: [
-      "Internal event management system (backend intern)",
-      "Node.js · Supabase · Vue · Vite",
-      "Backend logic, DB flows, admin dashboard",
+      "Contributed to backend optimization and Google OAuth integration",
+      "Designed secure DB schema with strict Row-Level Security (RLS)",
+      "Delivered scalable features for improved system reliability",
     ],
     links: {},
   },
@@ -138,9 +178,9 @@ export const projectsData = {
     short: "hospital website — HTML/CSS/Bootstrap",
     featured: false,
     details: [
-      "Responsive dental hospital website",
-      "Appointment forms, profiles, reviews, gallery",
-      "Deployed on Netlify",
+      "Fully responsive dental hospital site built with zero JavaScript",
+      "Focus on frontend fundamentals and custom CSS styling",
+      "Hand-rolled sections: Services, Doctors, FAQs, and Gallery",
     ],
     links: {
       live: "https://brightsmile-dental-hospital.netlify.app",
@@ -170,7 +210,7 @@ clear          clear terminal
 theme <n>      switch theme
 panic          ...try it
 
-sudo <cmd>     root access
+sudo <cmd>     root access |passwd == akiscool|
   sudo cat secret.txt
   sudo message "text"   → WhatsApp
   sudo ego
@@ -180,47 +220,63 @@ themes: void · gruvbox · nord · hacker
 tab → autocomplete   ↑↓ → history`;
 
 export const ABOUT_TEXT = `NAME    : Abhishek Krishna A.M
-ROLE    : Backend & Systems Engineer
-OS      : Arch Linux
-WM      : bspwm
-EDITOR  : Neovim
-─────────────────────────────────────
-I build systems, not templates.
+ROLE    : Systems & Backend Engineer
+OS      : Artix Linux (s6 init)
+WM      : bspwm + suckless tools
+SHELL   : bash / Go / C
+EDITOR  : Neovim (Custom Lua)
+MACHINE : Acer Aspire | 4GB RAM | Optimization-first
+────────────────────────────────────────────────────────────
+I build systems, not just applications.
 
-Work close to the metal.
-Believe real performance comes from
-understanding what's underneath.
+My engineering philosophy is rooted in resource efficiency. 
+I believe that software should be fast by default, not by 
+throwing more hardware at the problem.
 
-  → Linux · C · C++ · Go
-  → Backend at scale
-  → Tools that do one thing well
+EXPERTISE:
+  → High-Concurrency Backends (Go, Node.js, Supabase)
+  → Systems Programming (C, POSIX Sockets, Multi-threading)
+  → Linux Internalization (Init systems, TUI design, Kernel tuning)
+  → Database Architecture (PostgreSQL, Logic-heavy Views, RLS)
 
-─────────────────────────────────────
+TRACK RECORD:
+  → Scaled "Rythva" to 70,000+ requests under live load.
+  → Engineered "Staffo," now used by college administration.
+  → Stripped Systemd for s6 to achieve a <250MB idle footprint.
+
+Offline:
+  → Bodyweight training (50+ pushups/set)
+  → Ricing minimalist TUI environments
+  → Exploring deterministic systems design
+────────────────────────────────────────────────────────────
 cat ~/.config/bspwm/bspwmrc  ← real config
 cat /proc/version              ← real kernel`;
 
-export const SKILLS_TEXT = `[ Languages ]
-  C  C++  Go  Python  Java
-  JavaScript  TypeScript  Bash  Lua  Kotlin
+export const SKILLS_TEXT = `[ Systems & Core ]
+  C · Go · C++ · Kotlin · Bash · Lua
+  Linux (Artix/s6)
 
-[ Backend ]
-  Node.js · Express · Flask · Django
-  PostgreSQL · MongoDB · Supabase · Firebase
+[ Backend & Infrastructure ]
+  Node.js · Go (Standard Lib) · Flask · Python
+  PostgreSQL (Views, Triggers, RPC) · Supabase
+  REST · WebSockets · Realtime Engines
+  Git · Docker · Linux Server Admin
 
-[ Frontend ]
-  React · Next.js · Vite · TailwindCSS
-  Jetpack Compose
+[ Mobile & Frontend ]
+  Android (Kotlin + Jetpack Compose)
+  React · Next.js · TailwindCSS · Vite
+  Responsive Design (Zero-JS logic)
 
-[ Systems & Tools ]
-  Linux · bspwm · Neovim · Git
-  GDB · Valgrind · strace
-  Docker · Vercel · Netlify · Render
+[ Development Workflow ]
+  Neovim (Custom Lua IDE) · bspwm · st
+  Aggressive RAM Optimization · TUI Design
+  CI/CD (GitHub Actions) · Vercel · Render
 
-[ Focus ]
-  Backend Architecture
-  Systems Programming (C/C++/Go)
-  Android Development
-  Cybersecurity fundamentals`;
+[ Areas of Interest ]
+  High-Concurrency Systems
+  Deterministic Systems Design
+  Linux Kernel Internals
+  Systems Performance Tuning`;
 
 export const CONTACT_TEXT = `─────────────────────────────────────
   email     abhishekkrishna2k6@gmail.com

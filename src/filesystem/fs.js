@@ -7,59 +7,68 @@ export const filesystem = {
     children: ["about.txt", "skills.txt", "contact.txt", "secret.txt", ".config", ".bashrc", "projects", "README.md"],
   },
 
-  "/home/ak/about.txt": {
+"/home/ak/about.txt": {
     type: "file",
     content: `NAME    : Abhishek Krishna A.M
-ROLE    : Backend & Systems Engineer
-OS      : Arch Linux (yes, really)
-WM      : bspwm
-SHELL   : bash
-EDITOR  : Neovim
-MACHINE : Laptop
-──────────────────────────────────────
-I build systems, not templates.
+ROLE    : Systems & Backend Engineer
+OS      : Artix Linux (s6 init)
+WM      : bspwm + suckless tools
+SHELL   : bash / Go / C
+EDITOR  : Neovim (Custom Lua)
+MACHINE : Acer Aspire | 4GB RAM | Optimization-first
+────────────────────────────────────────────────────────────
+I build systems, not just applications.
 
-Work close to the metal.
-Believe real performance comes from
-understanding what happens under the hood.
+My engineering philosophy is rooted in resource efficiency. 
+I believe that software should be fast by default, not by 
+throwing more hardware at the problem.
 
-  → Linux internals & low-level systems
-  → Backend architecture that actually scales
-  → Tools that do one thing perfectly
+EXPERTISE:
+  → High-Concurrency Backends (Go, Node.js, Supabase)
+  → Systems Programming (C, POSIX Sockets, Multi-threading)
+  → Linux Internalization (Init systems, TUI design, Kernel tuning)
+  → Database Architecture (PostgreSQL, Logic-heavy Views, RLS)
+
+TRACK RECORD:
+  → Scaled "Rythva" to 70,000+ requests under live load.
+  → Engineered "Staffo," now used by college administration.
+  → Stripped Systemd for s6 to achieve a <250MB idle footprint.
 
 Offline:
-  → Home workouts
-  → Ricing bspwm setups at midnight
-  → Reading kernel source for fun (send help)
-──────────────────────────────────────
-$ skills   $ projects   $ contact`,
+  → Bodyweight training (50+ pushups/set)
+  → Ricing minimalist TUI environments
+  → Exploring deterministic systems design
+────────────────────────────────────────────────────────────
+$ skills    $ projects    $ contact`,
   },
 
-  "/home/ak/skills.txt": {
+"/home/ak/skills.txt": {
     type: "file",
-    content: `[ Languages ]
-  C  C++  Go  Python  Java
-  JavaScript  TypeScript  Bash  Lua  Kotlin
+    content: `[ Systems & Core ]
+  C · Go · C++ · Kotlin · Bash · Lua
+  Linux (Artix/s6)
 
-[ Backend ]
-  Node.js · Express · Flask · Django
-  REST APIs · WebSockets
-  PostgreSQL · MongoDB · Supabase · Firebase
+[ Backend & Infrastructure ]
+  Node.js · Go (Standard Lib) · Flask · Python
+  PostgreSQL (Views, Triggers, RPC) · Supabase
+  REST · WebSockets · Realtime Engines
+  Git · Docker · Linux Server Admin
 
-[ Frontend ]
-  React · Next.js · Vite · TailwindCSS
-  Bootstrap · Jetpack Compose
+[ Mobile & Frontend ]
+  Android (Kotlin + Jetpack Compose)
+  React · Next.js · TailwindCSS · Vite
+  Responsive Design (Zero-JS logic)
 
-[ Systems & Tools ]
-  Linux · bspwm · Neovim · Git · Docker
-  Vercel · Netlify · Render
-  GDB · Valgrind · strace · perf
+[ Development Workflow ]
+  Neovim (Custom Lua IDE) · bspwm · st
+  Aggressive RAM Optimization · TUI Design
+  CI/CD (GitHub Actions) · Vercel · Render
 
-[ Focus ]
-  Backend Architecture
-  Systems Programming
-  Android Development
-  Cybersecurity fundamentals`,
+[ Areas of Interest ]
+  High-Concurrency Systems
+  Deterministic Systems Design
+  Linux Kernel Internals
+  Systems Performance Tuning`,
   },
 
   "/home/ak/contact.txt": {
@@ -197,80 +206,101 @@ foreground = "#e2e8f0"
 cursor = "#e2e8f0"`,
   },
 
-  "/home/ak/projects": {
+"/home/ak/projects": {
     type: "dir",
-    children: ["http-server/", "sysdash/", "gpad/", "minimal-launcher/", "staffo/", "others/"],
+    children: ["rythva/", "questlytics/", "http-server/", "yukthi/", "staffo/", "gpad/", "sysdash/", "minimal-launcher/", "others/"],
+  },
+  "/home/ak/projects/rythva/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/rythva/README.md": {
+    type: "file",
+    content: "High-traffic arts fest management platform (70k+ requests). See: project rythva",
+  },
+  "/home/ak/projects/questlytics/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/questlytics/README.md": {
+    type: "file",
+    content: "AI-powered exam pattern analyzer using Gemini API. See: project questlytics",
   },
   "/home/ak/projects/http-server/": { type: "dir", children: ["README.md"] },
   "/home/ak/projects/http-server/README.md": {
     type: "file",
-    content: "Multi-threaded HTTP/1.1 server in C. See: project httpserver",
+    content: "Multi-threaded HTTP/1.1 server in C from scratch. See: project httpserver",
+  },
+  "/home/ak/projects/yukthi/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/yukthi/README.md": {
+    type: "file",
+    content: "Project expo judging system with DB-level ranking logic. See: project yukthi",
+  },
+  "/home/ak/projects/staffo/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/staffo/README.md": {
+    type: "file",
+    content: "Campus-scale staff availability intelligence system. See: project staffo",
+  },
+  "/home/ak/projects/gpad/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/gpad/README.md": {
+    type: "file",
+    content: "Git-powered CLI notes manager written in Go. See: project gpad",
   },
   "/home/ak/projects/sysdash/": { type: "dir", children: ["README.md"] },
   "/home/ak/projects/sysdash/README.md": {
     type: "file",
     content: "TUI system monitor in C++. See: project sysdash",
   },
-  "/home/ak/projects/gpad/": { type: "dir", children: ["README.md"] },
-  "/home/ak/projects/gpad/README.md": {
-    type: "file",
-    content: "Git-powered CLI notes manager in Go. See: project gpad",
-  },
   "/home/ak/projects/minimal-launcher/": { type: "dir", children: ["README.md"] },
   "/home/ak/projects/minimal-launcher/README.md": {
     type: "file",
-    content: "Terminal-style Android launcher. See: project minimallauncher",
-  },
-  "/home/ak/projects/staffo/": { type: "dir", children: ["README.md"] },
-  "/home/ak/projects/staffo/README.md": {
-    type: "file",
-    content: "Staff locating system for campus. See: project staffo",
+    content: "FZF-style terminal launcher for Android. See: project minimallauncher",
   },
   "/home/ak/projects/others/": { type: "dir", children: ["list.txt"] },
   "/home/ak/projects/others/list.txt": {
     type: "file",
-    content: "securefilelocker · brightsmile · btechified · artsapp · sjcet\nType 'projects' for full list.",
+    content: "apiheist · securefilelocker · sjcet · btechified · brightsmile\nType 'projects' for full list.",
   },
 
-  "/home/ak/secret.txt": {
+"/home/ak/secret.txt": {
     type: "file",
     secret: true,
     content: `CLASSIFIED — root access required
 
 [ DECRYPTED ]
-─────────────────────────────────────────
-  Almost quit coding at 17.
+────────────────────────────────────────────────────────────
+  I don't believe in "magic" software. 
+  If I can't trace the syscall, I don't trust the stack.
 
-  Then I built an HTTP server in C.
-  Understood sockets. Understood TCP.
-  Understood why the internet works.
+  While most are content with abstractions, I spent my 
+  time in the trenches of POSIX sockets and pthreads, 
+  learning exactly how the metal screams under load.
 
-  That was it. That was the moment.
+  Current System State:
+  → RYTHVA: Scaled to 70k+ requests. Production tested. 
+  → ARTIX: Stripped the Systemd bloat. Running s6 init.
+  → KERNEL: Zen-tuned for a 4GB RAM environment.
+  → PHILOSOPHY: If it uses more than 50MB idle, it's broken.
 
-  Currently:
-  → Building something in Go. Soon.
-  → Wrote an OS scheduler sim. For fun.
-  → bspwm config is at peak rice level.
+  Most developers build for 32GB MacBooks. 
+  I build for the real world—where resources are finite 
+  and efficiency is the difference between a tool and a toy.
 
-  I daily-drive Arch on a laptop.
-  I have recovered from grub corruption
-  at 2am more times than I can count.
+  I don't just write code. I engineer environments.
 
   Hire me before someone else does.
-─────────────────────────────────────────`,
+────────────────────────────────────────────────────────────`,
   },
 
   "/etc": { type: "dir", children: ["hostname", "os-release", "pacman.conf"] },
   "/etc/hostname": { type: "file", content: "portfolio" },
   "/etc/os-release": {
     type: "file",
-    content: `NAME="Arch Linux"
-PRETTY_NAME="Arch Linux"
-ID=arch
+    content: `NAME="Artix Linux"
+PRETTY_NAME="Artix Linux"
+ID=artix
 BUILD_ID=rolling
 ANSI_COLOR="38;2;23;147;209"
-HOME_URL="https://archlinux.org/"
-DOCUMENTATION_URL="https://wiki.archlinux.org/"`,
+HOME_URL="https://artixlinux.org/"
+DOCUMENTATION_URL="https://wiki.artixlinux.org/"
+SUPPORT_URL="https://forum.artixlinux.org/"
+BUG_REPORT_URL="https://bugs.artixlinux.org/"
+PRIVACY_POLICY_URL="https://terms.artixlinux.org/docs/privacy-policy/"
+LOGO=artixlinux-logo`,
   },
   "/etc/pacman.conf": {
     type: "file",
@@ -291,27 +321,66 @@ Include = /etc/pacman.d/mirrorlist
 Include = /etc/pacman.d/mirrorlist`,
   },
 
-  "/proc": { type: "dir", children: ["cpuinfo", "meminfo", "version"] },
+"/proc": { type: "dir", children: ["cpuinfo", "meminfo", "version"] },
   "/proc/cpuinfo": {
     type: "file",
     content: `processor       : 0
 vendor_id       : GenuineIntel
-model name      : Intel Core i5 (laptop)
-cpu MHz         : 2400.000
-cache size      : 6144 KB
-flags           : fpu vme de pse tsc msr ...`,
+cpu family      : 6
+model           : 61
+model name      : Intel(R) Core(TM) i3-5005U CPU @ 2.00GHz
+stepping        : 4
+microcode       : 0x1f
+cpu MHz         : 1258.221
+cache size      : 3072 KB
+physical id     : 0
+siblings        : 4
+core id         : 0
+cpu cores       : 2
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb pti tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid rdseed adx smap intel_pt xsaveopt dtherm arat pln pts vnmi
+bugs            : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs itlb_multihit srbds spectre_v2_user old_microcode vmscape
+address sizes   : 39 bits physical, 48 bits virtual
+
+processor       : 1
+... [logical processors 1-3 configured same as 0]`,
   },
-  "/proc/meminfo": {
+"/proc/meminfo": {
     type: "file",
-    content: `MemTotal:        8192000 kB
-MemFree:         3241000 kB
-MemAvailable:    5102000 kB
-Buffers:          312000 kB
-Cached:          1843000 kB`,
+    content: `MemTotal:        3913476 kB
+MemFree:          256000 kB
+MemAvailable:    1284216 kB
+Buffers:           24368 kB
+Cached:          1321120 kB
+SwapCached:         4088 kB
+Active:          2149884 kB
+Inactive:        1081888 kB
+Active(anon):    1745108 kB
+Inactive(anon):   246568 kB
+Active(file):     404776 kB
+Inactive(file):   835320 kB
+SwapTotal:      15126520 kB
+SwapFree:       14962440 kB
+Zswap:             53276 kB
+Zswapped:         154672 kB
+Dirty:              1484 kB
+Writeback:             0 kB
+AnonPages:       1949628 kB
+Mapped:           596568 kB
+Shmem:            105588 kB
+Slab:             135852 kB
+KernelStack:       10768 kB
+PageTables:        31772 kB
+CommitLimit:    17083256 kB
+Committed_AS:    4726132 kB
+VmallocTotal:   34359738367 kB
+VmallocUsed:       60784 kB
+Hugepagesize:       2048 kB
+DirectMap4k:      128828 kB
+DirectMap2M:     2930688 kB`,
   },
   "/proc/version": {
     type: "file",
-    content: "Linux version 6.14.0-arch1-1 (builduser@buildhost) (gcc 14.2.1) #1 SMP PREEMPT_DYNAMIC",
+    content: "Linux version 6.19.9-zen1-1-zen (linux-zen@artixlinux) (gcc (GCC) 15.2.1 20260209, GNU ld (GNU Binutils) 2.46) #1 ZEN SMP PREEMPT_DYNAMIC Tue, 24 Mar 2026 03:51:09 +0000",
   },
 
   "/usr": { type: "dir", children: ["bin"] },
