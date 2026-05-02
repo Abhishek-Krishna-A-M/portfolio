@@ -50,7 +50,7 @@ ok "starting bspwm"
 sleep 0.12
 ok "starting sxhkd"
 sleep 0.12
-ok "loading st"
+ok "loading urxvt"
 sleep 0.15
 ok "syncing remote session: abhishekkrishna.vercel.app"
 sleep 0.20
@@ -88,7 +88,7 @@ echo -e "  ${MUTED}Backend & Systems Engineer${RESET}"
 sep
 
 echo ""
-echo -e "  ${ACCENT}os${RESET}        Artix Linux(s6) (btw)"
+echo -e "  ${ACCENT}os${RESET}        Artix Linux(runit) (btw)"
 echo -e "  ${ACCENT}wm${RESET}        bspwm"
 echo -e "  ${ACCENT}shell${RESET}     bash"
 echo -e "  ${ACCENT}editor${RESET}    Neovim"
@@ -104,8 +104,8 @@ sep
 echo ""
 echo -e "  ${MUTED}[ featured projects ]${RESET}"
 echo ""
-echo -e "  ${ACCENT}⚙${RESET}  http-server        multi-threaded HTTP/1.1 server — C"
-echo -e "  ${ACCENT}▓${RESET}  sysdash            TUI system monitor — C++"
+echo -e "  ${ACCENT}⚙${RESET}  staffo             A staff locating system"
+echo -e "  ${ACCENT}▓${RESET}  rythva             arts fest platform"
 echo -e "  ${ACCENT}›${RESET}  gpad               git-powered notes manager — Go"
 echo -e "  ${ACCENT}□${RESET}  minimal-launcher   terminal-style Android launcher — Kotlin"
 echo ""

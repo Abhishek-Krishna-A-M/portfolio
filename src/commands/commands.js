@@ -29,7 +29,7 @@ export const projectsData = {
     title: "HTTP Server in C",
     icon: "⚙",
     short: "multi-threaded HTTP/1.1 server — C",
-    featured: true,
+    featured: false,
     details: [
       "Custom multi-threaded HTTP/1.1 server from scratch in C",
       "Static file serving, SPA fallback, basic API endpoints",
@@ -123,7 +123,7 @@ export const projectsData = {
     title: "Minimal Launcher",
     icon: "□",
     short: "terminal-style Android launcher — Kotlin/Compose",
-    featured: false,
+    featured: true,
     details: [
       "Terminal-style Android launcher (Kotlin + Jetpack Compose)",
       "~15–20 MB RAM usage — optimized for systems-level efficiency",
@@ -164,7 +164,7 @@ export const projectsData = {
     title: "Btechified",
     icon: "◈",
     short: "educational platform — React + Supabase",
-    featured: false,
+    featured: true,
     details: [
       "Contributed to backend optimization and Google OAuth integration",
       "Designed secure DB schema with strict Row-Level Security (RLS)",
