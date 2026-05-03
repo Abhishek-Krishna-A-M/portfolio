@@ -208,7 +208,7 @@ export default function Terminal() {
           value={inputVal}
           onChange={setInputVal}
           onCommand={exec}
-          placeholder={!awaitPass &&!inputVal ? "awaiting command... (try 'help')" : ""}
+          placeholder={!awaitPass &&!inputVal ? "stuck? -> try 'help'" : ""}
         />
 
 {/* Mobile hint — bottom of page, not a footer bar */}
