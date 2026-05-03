@@ -20,7 +20,7 @@ function autocomplete(input) {
 }
 
 const InputLine = forwardRef(function InputLine(
-  { onCommand, mask = false, prefix, disabled = false, value, onChange },
+  { onCommand, mask = false, prefix, disabled = false, value, onChange, placeholder }, 
   ref
 ) {
   const { theme } = useTheme();
@@ -72,6 +72,7 @@ const InputLine = forwardRef(function InputLine(
         {prefix}
       </span>
       <input
+        placeholder={placeholder}
         ref={inputRef}
         type={mask ? "password" : "text"}
         autoComplete="off"
@@ -93,6 +94,7 @@ const InputLine = forwardRef(function InputLine(
           caretColor: theme.cursor,
           letterSpacing: "0.01em",
           minWidth: 0,
+          opacity: value ? 1 : 0.8,
         }}
       />
     </div>
