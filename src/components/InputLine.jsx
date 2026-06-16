@@ -4,11 +4,11 @@ import { useTheme } from "../themes/ThemeContext";
 const COMPLETIONS = [
   "about", "skills", "projects", "project ", "contact", "help",
   "ls", "cat ", "cd ", "tree", "pwd",
-  "neofetch", "uptime", "history", "clear", "panic",
+  "fastfetch", "neofetch", "uptime", "history", "clear", "panic",
   "theme ", "theme void", "theme gruvbox", "theme nord", "theme hacker",
   "sudo ", "sudo cat ", "sudo message ", "sudo photo", "sudo ego",
   "github", "whoami", "echo ", "date", "uname -a",
-  "cat ~/.bashrc", "cat ~/.config/bspwm/bspwmrc",
+  "cat ~/.bashrc", "cat ~/.config/sway/config",
   "cat /home/ak/secret.txt", "ls /home/ak",
 ];
 
@@ -72,6 +72,7 @@ const InputLine = forwardRef(function InputLine(
         {prefix}
       </span>
       <input
+        aria-label="Terminal command input"
         placeholder={placeholder}
         ref={inputRef}
         type={mask ? "password" : "text"}

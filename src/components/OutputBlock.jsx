@@ -36,7 +36,7 @@ function ResultLine({ r, theme }) {
 
     case "error":
       return (
-        <div style={{ ...base, color: theme.textDim }}>
+        <div style={{ ...base, color: theme.error }}>
           {r.text}
         </div>
       );
@@ -51,12 +51,14 @@ function ResultLine({ r, theme }) {
     case "link":
       return (
         <div style={{ ...base, color: theme.accent }}>
-          <span
-            style={{ cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "3px" }}
-            onClick={() => window.open(r.href, "_blank", "noopener,noreferrer")}
+          <a
+            href={r.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "inherit", cursor: "pointer", textDecoration: "underline", textUnderlineOffset: "3px" }}
           >
             {r.text}
-          </span>
+          </a>
         </div>
       );
 

@@ -103,7 +103,7 @@ export const projectsData = {
       "Neovim-style TUI system monitor in C++",
       "CPU, RAM, Swap, Disk, Network, running processes",
       "Kill processes directly from the interface",
-      "Lightweight — htop philosophy, neofetch aesthetics",
+      "Lightweight — htop philosophy, fastfetch aesthetics",
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/sysdash" },
   },
@@ -203,7 +203,7 @@ cd <path>      change directory
 tree [path]    directory tree
 pwd            working directory
 
-neofetch       system info
+fastfetch/neofetch  system info
 uptime         session time
 history        command history
 clear          clear terminal
@@ -219,42 +219,35 @@ sudo <cmd>     root access |passwd == akiscool|
 themes: void · gruvbox · nord · hacker
 tab → autocomplete   ↑↓ → history`;
 
-export const ABOUT_TEXT = `NAME    : Abhishek Krishna A.M
+export const ABOUT_TEXT = `NAME    : Abhishek Krishna
 ROLE    : Systems & Backend Engineer
-OS      : Artix Linux (s6 init)
-WM      : bspwm + suckless tools
+OS      : Artix Linux (runit)
+WM      : sway + foot
 SHELL   : bash / Go / C
 EDITOR  : Neovim (Custom Lua)
 MACHINE : Acer Aspire | 4GB RAM | Optimization-first
 ────────────────────────────────────────────────────────────
-I build systems, not just applications.
-
-My engineering philosophy is rooted in resource efficiency. 
-I believe that software should be fast by default, not by 
-throwing more hardware at the problem.
+I build systems that don't waste resources.
 
 EXPERTISE:
   → High-Concurrency Backends (Go, Node.js, Supabase)
   → Systems Programming (C, POSIX Sockets, Multi-threading)
-  → Linux Internalization (Init systems, TUI design, Kernel tuning)
+  → Linux Internals (Init systems, TUI design, Kernel tuning)
   → Database Architecture (PostgreSQL, Logic-heavy Views, RLS)
 
 TRACK RECORD:
   → Scaled "Rythva" to 70,000+ requests under live load.
   → Engineered "Staffo," now used by college administration.
-  → Stripped Systemd for s6 to achieve a <250MB idle footprint.
+  → Stripped Systemd for runit to achieve a <250MB idle footprint.
 
-Offline:
-  → Bodyweight training (50+ pushups/set)
-  → Ricing minimalist TUI environments
-  → Exploring deterministic systems design
+Offline: Ricing TUIs · Bodyweight training · Exploring deterministic systems
 ────────────────────────────────────────────────────────────
-cat ~/.config/bspwm/bspwmrc  ← real config
+cat ~/.config/sway/config     ← real config
 cat /proc/version              ← real kernel`;
 
 export const SKILLS_TEXT = `[ Systems & Core ]
   C · Go · C++ · Kotlin · Bash · Lua
-  Linux (Artix/s6)
+  Linux (Artix/runit)
 
 [ Backend & Infrastructure ]
   Node.js · Go (Standard Lib) · Flask · Python
@@ -268,7 +261,7 @@ export const SKILLS_TEXT = `[ Systems & Core ]
   Responsive Design (Zero-JS logic)
 
 [ Development Workflow ]
-  Neovim (Custom Lua IDE) · bspwm · st
+  Neovim (Custom Lua IDE) · sway · foot
   Aggressive RAM Optimization · TUI Design
   CI/CD (GitHub Actions) · Vercel · Render
 
@@ -282,6 +275,6 @@ export const CONTACT_TEXT = `─────────────────
   email     abhishekkrishna2k6@gmail.com
   github    github.com/Abhishek-Krishna-A-M
   linkedin  linkedin.com/in/abhishek-krishna-a-m-137895328
-  wa        +918075656775
+  whatsapp  +918075656775
 ─────────────────────────────────────
-  sudo message "hey" → opens WhatsApp`;
+  sudo message "hi" → opens WhatsApp`;

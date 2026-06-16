@@ -2,18 +2,18 @@ import { useEffect, useState, useCallback } from "react";
 import { useTheme } from "../themes/ThemeContext";
 
 const BOOT_STEPS = [
-  { t: 0,    ok: false, dim: true,  text: "BIOS v2.0  —  AK Systems  —  Laptop" },
+  { t: 0,    ok: false, dim: true,  text: "BIOS V1.15  —  Acer  —  Aspire E5-573" },
   { t: 100,  ok: false, dim: true,  text: "" },
-  { t: 160,  ok: true,             text: "loading kernel 6.14.0-arch1-1" },
+  { t: 160,  ok: true,             text: "loading kernel 7.0.11-zen1-1-zen" },
   { t: 340,  ok: true,             text: "mounting filesystem (ext4)" },
-  { t: 500,  ok: true,             text: "starting bspwm" },
-  { t: 630,  ok: true,             text: "starting sxhkd" },
-  { t: 750,  ok: true,             text: "loading st" },
+  { t: 500,  ok: true,             text: "starting sway" },
+  { t: 630,  ok: true,             text: "starting foot" },
+  { t: 750,  ok: true,             text: "loading wayland" },
   { t: 900,  ok: true,             text: "importing projects.db" },
   { t: 1060, ok: true,             text: "indexing skills manifest" },
   { t: 1220, ok: true,             text: "spawning portfolio shell v2.0" },
   { t: 1380, ok: false, dim: true,  text: "" },
-  { t: 1440, ok: false,            text: "Arch Linux 6.14.0-arch1-1 (tty1)" },
+  { t: 1440, ok: false,            text: "Artix Linux 7.0.11-zen1-1-zen (tty1)" },
   { t: 1600, ok: false,            text: "portfolio login: ak" },
   { t: 1760, ok: false, dim: true,  text: "" },
 ];

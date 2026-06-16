@@ -34,9 +34,9 @@ clear
 
 # ── BIOS line ────────────────────────────────────────────────
 echo ""
-dim "  BIOS v2.0  —  AK Systems  —  Laptop"
+dim "  BIOS V1.15  —  Acer  —  Aspire E5-573"
 # Updated RAM display to reflect actual capacity
-dim "  CPU: Intel Core i3  |  RAM: 4.0 GiB  |  ARTIX(S6): x86_64"
+dim "  CPU: Intel Core i3  |  RAM: 4.0 GiB  |  ARTIX(RUNIT): x86_64"
 echo ""
 
 sleep 0.2
@@ -46,11 +46,11 @@ ok "loading kernel"
 sleep 0.18
 ok "mounting filesystem (ext4)"
 sleep 0.15
-ok "starting bspwm"
+ok "starting sway"
 sleep 0.12
-ok "starting sxhkd"
+ok "starting foot"
 sleep 0.12
-ok "loading urxvt"
+ok "loading wayland"
 sleep 0.15
 ok "syncing remote session: abhishekkrishna.vercel.app"
 sleep 0.20
@@ -62,9 +62,9 @@ ok "spawning portfolio shell v2.0"
 sleep 0.25
 
 echo ""
-dim "  Linux artixlinux 6.19.9-zen1-1-zen (tty1)"
+dim "  Linux portfolio 7.0.11-zen1-1-zen (tty1)"
 sleep 0.3
-dim "  archbox login: ak"
+dim "  portfolio login: ak"
 sleep 0.4
 dim "  Last login: $(date)"
 sleep 0.3
@@ -83,18 +83,18 @@ sleep 0.2
 
 # ── Identity card ────────────────────────────────────────────
 sep
-echo -e "  ${BOLD}${WHITE}ABHISHEK KRISHNA A.M${RESET}"
-echo -e "  ${MUTED}Backend & Systems Engineer${RESET}"
+echo -e "  ${BOLD}${WHITE}ABHISHEK KRISHNA${RESET}"
+echo -e "  ${MUTED}Systems & Backend Engineer${RESET}"
 sep
 
 echo ""
 echo -e "  ${ACCENT}os${RESET}        Artix Linux(runit) (btw)"
-echo -e "  ${ACCENT}wm${RESET}        bspwm"
+echo -e "  ${ACCENT}wm${RESET}        sway"
 echo -e "  ${ACCENT}shell${RESET}     bash"
 echo -e "  ${ACCENT}editor${RESET}    Neovim"
 echo -e "  ${ACCENT}lang${RESET}      C  C++  Go  Python  JS  Bash  Lua"
 # Added the corrected memory line here for visual flair
-echo -e "  ${ACCENT}memory${RESET}    250.60 MiB / 3.73 GiB (6.56%)"
+echo -e "  ${ACCENT}memory${RESET}    250 MiB / 3.73 GiB"
 echo -e "  ${ACCENT}url${RESET}       https://abhishekkrishna.vercel.app"
 echo ""
 

@@ -18,8 +18,17 @@ body { overflow-x: hidden; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border, rgba(255,255,255,0.08)); border-radius: 2px; }
 
-/* Cursor blink */
-@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+/* Placeholder styling */
+::placeholder { opacity: 0.35; }
+
+/* Reduced motion — disable animations for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 /* Mobile */
 @media (max-width: 600px) {

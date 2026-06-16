@@ -9,35 +9,28 @@ export const filesystem = {
 
 "/home/ak/about.txt": {
     type: "file",
-    content: `NAME    : Abhishek Krishna A.M
+    content: `NAME    : Abhishek Krishna
 ROLE    : Systems & Backend Engineer
-OS      : Artix Linux (s6 init)
-WM      : bspwm + suckless tools
+OS      : Artix Linux (runit)
+WM      : sway + foot
 SHELL   : bash / Go / C
 EDITOR  : Neovim (Custom Lua)
 MACHINE : Acer Aspire | 4GB RAM | Optimization-first
 ────────────────────────────────────────────────────────────
-I build systems, not just applications.
-
-My engineering philosophy is rooted in resource efficiency. 
-I believe that software should be fast by default, not by 
-throwing more hardware at the problem.
+I build systems that don't waste resources.
 
 EXPERTISE:
   → High-Concurrency Backends (Go, Node.js, Supabase)
   → Systems Programming (C, POSIX Sockets, Multi-threading)
-  → Linux Internalization (Init systems, TUI design, Kernel tuning)
+  → Linux Internals (Init systems, TUI design, Kernel tuning)
   → Database Architecture (PostgreSQL, Logic-heavy Views, RLS)
 
 TRACK RECORD:
   → Scaled "Rythva" to 70,000+ requests under live load.
   → Engineered "Staffo," now used by college administration.
-  → Stripped Systemd for s6 to achieve a <250MB idle footprint.
+  → Stripped Systemd for runit to achieve a <250MB idle footprint.
 
-Offline:
-  → Bodyweight training (50+ pushups/set)
-  → Ricing minimalist TUI environments
-  → Exploring deterministic systems design
+Offline: Ricing TUIs · Bodyweight training · Exploring deterministic systems
 ────────────────────────────────────────────────────────────
 $ skills    $ projects    $ contact`,
   },
@@ -46,7 +39,7 @@ $ skills    $ projects    $ contact`,
     type: "file",
     content: `[ Systems & Core ]
   C · Go · C++ · Kotlin · Bash · Lua
-  Linux (Artix/s6)
+  Linux (Artix/runit)
 
 [ Backend & Infrastructure ]
   Node.js · Go (Standard Lib) · Flask · Python
@@ -60,7 +53,7 @@ $ skills    $ projects    $ contact`,
   Responsive Design (Zero-JS logic)
 
 [ Development Workflow ]
-  Neovim (Custom Lua IDE) · bspwm · st
+  Neovim (Custom Lua IDE) · sway · foot
   Aggressive RAM Optimization · TUI Design
   CI/CD (GitHub Actions) · Vercel · Render
 
@@ -99,7 +92,7 @@ $ skills    $ projects    $ contact`,
     content: `# ~/.bashrc — ak's actual config (mostly)
 export EDITOR=nvim
 export VISUAL=nvim
-export TERMINAL=st
+export TERMINAL=foot
 export PATH="$HOME/.local/bin:$PATH"
 
 # aliases
@@ -112,66 +105,50 @@ alias ports='ss -tulpn'
 alias mem='free -h'
 alias cpu='cat /proc/cpuinfo | grep "model name" | head -1'
 
-# bspwm helpers
-alias bsp='bspc'
-alias reload='bspc wm -r'
-
 # prompt
 PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '
 
-# start bspwm if on tty1
-[[ $(tty) = /dev/tty1 ]] && exec startx`,
+# start sway if on tty1
+[[ $(tty) = /dev/tty1 ]] && exec sway`,
   },
 
   "/home/ak/.config": {
     type: "dir",
-    children: ["bspwm", "sxhkd", "nvim"],
+    children: ["sway", "nvim"],
   },
-  "/home/ak/.config/bspwm": { type: "dir", children: ["bspwmrc"] },
-  "/home/ak/.config/bspwm/bspwmrc": {
+  "/home/ak/.config/sway": { type: "dir", children: ["config"] },
+  "/home/ak/.config/sway/config": {
     type: "file",
-    content: `#!/bin/sh
-# bspwmrc — ak's config
+    content: `# sway config — ak's config
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+set $mod Mod4
+set $term foot
 
-bspc config border_width         2
-bspc config window_gap           8
-bspc config split_ratio          0.52
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+# workspaces
+workspace 1
+workspace 2
+workspace 3
+workspace 4
+workspace 5
+
+# keybindings
+bindsym $mod+Return exec $term
+bindsym $mod+d exec wmenu-run
+bindsym $mod+Shift+q kill
+
+# focus
+bindsym $mod+{h,j,k,l} focus {left,down,up,right}
+
+# move
+bindsym $mod+Shift+{h,j,k,l} move {left,down,up,right}
+
+# gaps
+gaps inner 8
+gaps outer 4
 
 # colors
-bspc config normal_border_color  "#1a1a1a"
-bspc config active_border_color  "#e2e8f0"
-bspc config focused_border_color "#e2e8f0"
-
-sxhkd &`,
-  },
-  "/home/ak/.config/sxhkd": { type: "dir", children: ["sxhkdrc"] },
-  "/home/ak/.config/sxhkd/sxhkdrc": {
-    type: "file",
-    content: `# sxhkdrc — keybindings
-
-# terminal
-super + Return
-  st
-
-# launcher
-super + d
-  dmenu_run
-
-# close window
-super + shift + q
-  bspc node -c
-
-# focus direction
-super + {h,j,k,l}
-  bspc node -f {west,south,north,east}
-
-# move window
-super + shift + {h,j,k,l}
-  bspc node -s {west,south,north,east}`,
+client.focused          #e2e8f0 #1a1a1a #e2e8f0
+client.unfocused        #333333 #1a1a1a #333333`,
   },
   "/home/ak/.config/nvim": { type: "dir", children: ["init.lua"] },
   "/home/ak/.config/nvim/init.lua": {
@@ -253,7 +230,7 @@ require("core.lazy")   -- lazy.nvim plugin manager
 
   Current System State:
   → RYTHVA: Scaled to 70k+ requests. Production tested. 
-  → ARTIX: Stripped the Systemd bloat. Running s6 init.
+  → ARTIX: Stripped the Systemd bloat. Running runit init.
   → KERNEL: Zen-tuned for a 4GB RAM environment.
   → PHILOSOPHY: If it uses more than 50MB idle, it's broken.
 
@@ -327,20 +304,20 @@ processor       : 1
   },
 "/proc/meminfo": {
     type: "file",
-    content: `MemTotal:        3913476 kB
-MemFree:          256000 kB
-MemAvailable:    1284216 kB
-Buffers:           24368 kB
-Cached:          1321120 kB
-SwapCached:         4088 kB
-Active:          2149884 kB
-Inactive:        1081888 kB
-Active(anon):    1745108 kB
-Inactive(anon):   246568 kB
-Active(file):     404776 kB
-Inactive(file):   835320 kB
+    content: `MemTotal:        3911832 kB
+MemFree:         1026444 kB
+MemAvailable:    1968380 kB
+Buffers:           15596 kB
+Cached:          1302224 kB
+SwapCached:          184 kB
+Active:          2277388 kB
+Inactive:         167368 kB
+Active(anon):    1266420 kB
+Inactive(anon):    44836 kB
+Active(file):    1010968 kB
+Inactive(file):   122532 kB
 SwapTotal:      15126520 kB
-SwapFree:       14962440 kB
+SwapFree:       14863800 kB
 Zswap:             53276 kB
 Zswapped:         154672 kB
 Dirty:              1484 kB
@@ -361,18 +338,19 @@ DirectMap2M:     2930688 kB`,
   },
   "/proc/version": {
     type: "file",
-    content: "Linux version 6.19.9-zen1-1-zen (linux-zen@artixlinux) (gcc (GCC) 15.2.1 20260209, GNU ld (GNU Binutils) 2.46) #1 ZEN SMP PREEMPT_DYNAMIC Tue, 24 Mar 2026 03:51:09 +0000",
+    content: "Linux version 7.0.11-zen1-1-zen (linux-zen@artixlinux) (gcc (GCC) 16.1.1 20260430, GNU ld (GNU Binutils) 2.46.0) #1 ZEN SMP PREEMPT_DYNAMIC Sat, 06 Jun 2026 20:27:28 +0000",
   },
 
   "/usr": { type: "dir", children: ["bin"] },
-  "/usr/bin": { type: "dir", children: ["nvim", "git", "gcc", "go", "node", "python3", "bspwm", "pacman"] },
-  "/usr/bin/nvim": { type: "file", content: "NVIM v0.11.0" },
-  "/usr/bin/git": { type: "file", content: "git version 2.49.0" },
-  "/usr/bin/gcc": { type: "file", content: "gcc (GCC) 14.2.1 20250207" },
-  "/usr/bin/go": { type: "file", content: "go version go1.24.2 linux/amd64" },
-  "/usr/bin/node": { type: "file", content: "v22.14.0" },
-  "/usr/bin/python3": { type: "file", content: "Python 3.12.9" },
-  "/usr/bin/bspwm": { type: "file", content: "bspwm version 0.9.10" },
+  "/usr/bin": { type: "dir", children: ["nvim", "git", "gcc", "go", "node", "python3", "foot", "fastfetch", "pacman"] },
+  "/usr/bin/nvim": { type: "file", content: "NVIM v0.12.2" },
+  "/usr/bin/git": { type: "file", content: "git version 2.54.0" },
+  "/usr/bin/gcc": { type: "file", content: "gcc (GCC) 16.1.1 20260430" },
+  "/usr/bin/go": { type: "file", content: "go version go1.26.3-X:nodwarf5 linux/amd64" },
+  "/usr/bin/node": { type: "file", content: "v26.2.0" },
+  "/usr/bin/python3": { type: "file", content: "Python 3.14.5" },
+  "/usr/bin/foot": { type: "file", content: "foot version 1.22.0" },
+  "/usr/bin/fastfetch": { type: "file", content: "fastfetch 2.31.0" },
   "/usr/bin/pacman": { type: "file", content: "Pacman v7.0.0 - libalpm v15.0.0" },
 
   "/var": { type: "dir", children: ["log"] },
@@ -380,11 +358,20 @@ DirectMap2M:     2930688 kB`,
   "/var/log/pacman.log": {
     type: "file",
     content: `[2025-03-20] [PACMAN] starting full system upgrade
-[2025-03-20] [ALPM] upgraded linux (6.13.0 -> 6.14.0)
+[2025-03-20] [ALPM] upgraded linux-zen (6.13.0 -> 6.14.0)
 [2025-03-20] [ALPM] upgraded neovim (0.10.4 -> 0.11.0)
 [2025-03-20] [ALPM] upgraded go (1.24.1 -> 1.24.2)
 [2025-03-20] [ALPM] upgraded git (2.48.1 -> 2.49.0)
-[2025-03-21] [PACMAN] Running 'pacman -Syu'`,
+[2025-06-07] [PACMAN] starting full system upgrade
+[2025-06-07] [ALPM] upgraded linux-zen (6.14.0 -> 7.0.10.zen1-1)
+[2025-06-07] [ALPM] upgraded neovim (0.11.0 -> 0.12.2)
+[2025-06-07] [ALPM] upgraded go (1.24.2 -> 1.26.3)
+[2025-06-07] [ALPM] upgraded git (2.49.0 -> 2.54.0)
+[2025-06-07] [ALPM] upgraded gcc (14.2.1 -> 16.1.1)
+[2025-06-07] [ALPM] upgraded node (22.14.0 -> 26.2.0)
+[2025-06-07] [ALPM] upgraded python (3.12.9 -> 3.14.5)
+[2025-06-07] [ALPM] upgraded linux-zen (7.0.10.zen1-1 -> 7.0.11.zen1-1)
+[2025-06-16] [PACMAN] Running 'pacman -Syu'`,
   },
 };
 

@@ -103,33 +103,32 @@ export function handle(raw, { cwd = HOME, isSudo = false, sessionStart } = {}) {
   if (lower === "pwd") return [T.text(cwd)];
 
   // ── system commands ──────────────────────────────────────────────
-  if (lower === "neofetch") {
+  if (lower === "fastfetch" || lower === "neofetch") {
     const up = getUptime(sessionStart);
 const lines = [
-      `[ak@artixlinux ~]$ fastfetch`,
-      `                   '                       ak@artixlinux`,
+      `[ak@portfolio ~]$ fastfetch`,
+      `                   '                       ak@portfolio`,
       `                  'o'                      -------------`,
       `                 'ooo'                     OS: Artix Linux x86_64`,
-      `                'ooxoo'                    Host: Aspire E5-573 (V3.72)`,
-      `               'ooxxxoo'                   Kernel: Linux 6.19.9-zen1-1-zen`,
+      `                'ooxoo'                    Host: Aspire E5-573 (V1.15)`,
+      `               'ooxxxoo'                   Kernel: Linux 7.0.11-zen1-1-zen`,
       `              'oookkxxoo'                  Uptime: ${up}`,
-      `             'oiioxkkxxoo'                 Packages: 558 (pacman)`,
+      `             'oiioxkkxxoo'                 Packages: 759 (pacman)`,
       `            ':;:iiiioxxxoo'                Shell: bash 5.3.9`,
       `               \`'.;::ioxxoo'               Display: 1366x768 (15")`,
-      `          '-.      \`':;jiooo'              WM: bspwm (X11)`,
-      `         'oooio-..     \`'i:io'             Init System: s6`,
-      `        'ooooxxxxoio:,.  \`'-;'             Terminal: st 0.9.3`,
-      `       'ooooxxxxxkkxoooIi:-.  \`'           Terminal Font: Fira Code Nerd Font`,
-      `      'ooooxxxxxkkkkxoiiiiiji'             CPU: Intel(R) Core(TM) i3-5005U (4)`,
-      `     'ooooxxxxxkxxoiiii:'\`     .i'         GPU: Intel HD Graphics 5500`,
-      `    'ooooxxxxxoi:::'\`       .;ioxo'        Memory: 250.60 MiB / 3.73 GiB (6.56%)`,
-      `   'ooooxooi::'\`          .:iiixkxxo'      Swap: 161.49 MiB / 14.43 GiB`,
-      `  'ooooi:'\`                \`'';ioxxo'      Disk (/): 7.49 GiB / 903.51 GiB`,
-      ` 'i:'\`                          '':io'     Battery: 100% [AC Connected]`,
+      `          '-.      \`':;jiooo'              WM: sway (Wayland)`,
+      `         'oooio-..     \`'i:io'             Init System: runit`,
+      `        'ooooxxxxoio:,.  \`'-;'             Terminal: foot`,
+      `       'ooooxxxxxkkxoooIi:-.  \`'           CPU: Intel(R) Core(TM) i3-5005U (4)`,
+      `      'ooooxxxxxkkkkxoiiiiiji'             GPU: Intel HD Graphics 5500`,
+      `     'ooooxxxxxkxxoiiii:'\`     .i'         Memory: 250 MiB / 3.73 GiB`,
+      `    'ooooxxxxxoi:::'\`       .;ioxo'        Swap: 255 MiB / 14.42 GiB`,
+      `   'ooooxooi::'\`          .:iiixkxxo'      Disk (/): 51 GiB / 903.51 GiB`,
+      `  'ooooi:'\`                \`'';ioxxo'      Battery: 100% [AC Connected]`,
       `'\`                                   \`'    Locale: en_US.UTF-8`,
       ``,
       `    ████  ████  ████  ████  ████  ████  ████  ████`,
-      `[ak@artixlinux ~]$ `,
+      `[ak@portfolio ~]$ `,
     ];
     return [T.text(lines.join("\n"))];
   }
@@ -137,7 +136,7 @@ const lines = [
   if (lower === "uptime")  return [T.text(`up ${getUptime(sessionStart)}`)];
   if (lower === "whoami")  return [T.text(isSudo ? "root" : "ak")];
   if (lower === "date")    return [T.text(new Date().toString())];
-  if (lower === "uname -a") return [T.text("Linux artixlinux 6.19.9-zen1-1-zen #1 ZEN SMP PREEMPT_DYNAMIC Tue, 24 Mar 2026 03:51:09 +0000 x86_64 GNU/Linux")];
+  if (lower === "uname -a") return [T.text("Linux portfolio 7.0.11-zen1-1-zen #1 ZEN SMP PREEMPT_DYNAMIC Sat, 06 Jun 2026 20:27:28 +0000 x86_64 GNU/Linux")];
 
   // ── theme ────────────────────────────────────────────────────────
   if (cmd === "theme") {
@@ -203,7 +202,7 @@ ROOT SHELL — EGO MODULE LOADED
   My Android launcher runs at ~18MB RAM. 
   Your "minimal" web app uses more than my entire OS.
 
-  Daily driving Artix + s6. No Systemd bloat here.
+  Daily driving Artix + runit. No Systemd bloat here.
   My Neovim startup time is 45ms and I'm still trying
   to shave off another 5ms.
 
@@ -214,7 +213,7 @@ ROOT SHELL — EGO MODULE LOADED
   Artix. Art-of-Linux. CLI-first. btw.`)];
 
   if (cmd === "message") {
-    const msg = args.join(" ").replace(/^["']|["']$/g, "") || "Hey AK! I saw your portfolio.";
+    const msg = args.join(" ").replace(/^["']|["']$/g, "") || "Hey AK! I saw your portfolio. Its dope";
     const url = `https://wa.me/918075656775?text=${encodeURIComponent(msg)}`;
     return [
       T.ok("opening WhatsApp..."),
