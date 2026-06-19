@@ -152,7 +152,7 @@ export const projectsData = {
     featured: true,
     details: [
       "Lightweight BSP tiling Wayland compositor built on wlroots",
-      "Tabbed containers, floating windows, monocle, and BSP layout",
+      "Floating windows, monocle, and BSP layout",
       "Multi-monitor hotplug support (extend, mirror, auto-arrange)",
       "Unfocus dimming and per-window opacity rules",
       "Custom UWM bar protocol (zwp_uwm_bar_v1)",
