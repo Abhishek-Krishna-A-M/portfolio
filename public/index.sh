@@ -46,7 +46,7 @@ ok "loading kernel"
 sleep 0.18
 ok "mounting filesystem (ext4)"
 sleep 0.15
-ok "starting sway"
+ok "starting uwm"
 sleep 0.12
 ok "starting foot"
 sleep 0.12
@@ -89,7 +89,7 @@ sep
 
 echo ""
 echo -e "  ${ACCENT}os${RESET}        Artix Linux(runit) (btw)"
-echo -e "  ${ACCENT}wm${RESET}        sway"
+echo -e "  ${ACCENT}wm${RESET}        uwm (Wayland)"
 echo -e "  ${ACCENT}shell${RESET}     bash"
 echo -e "  ${ACCENT}editor${RESET}    Neovim"
 echo -e "  ${ACCENT}lang${RESET}      C  C++  Go  Python  JS  Bash  Lua"
@@ -108,6 +108,7 @@ echo -e "  ${ACCENT}⚙${RESET}  staffo             A staff locating system"
 echo -e "  ${ACCENT}▓${RESET}  rythva             arts fest platform"
 echo -e "  ${ACCENT}›${RESET}  gpad               git-powered notes manager — Go"
 echo -e "  ${ACCENT}□${RESET}  minimal-launcher   terminal-style Android launcher — Kotlin"
+echo -e "  ${ACCENT}▣${RESET}  uwm                BSP Wayland compositor — C (wlroots)"
 echo ""
 
 sep

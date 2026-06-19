@@ -12,7 +12,7 @@ export const filesystem = {
     content: `NAME    : Abhishek Krishna
 ROLE    : Systems & Backend Engineer
 OS      : Artix Linux (runit)
-WM      : sway + foot
+WM      : uwm (Wayland)
 SHELL   : bash / Go / C
 EDITOR  : Neovim (Custom Lua)
 MACHINE : Acer Aspire | 4GB RAM | Optimization-first
@@ -53,7 +53,7 @@ $ skills    $ projects    $ contact`,
   Responsive Design (Zero-JS logic)
 
 [ Development Workflow ]
-  Neovim (Custom Lua IDE) · sway · foot
+  Neovim (Custom Lua IDE) · uwm · foot
   Aggressive RAM Optimization · TUI Design
   CI/CD (GitHub Actions) · Vercel · Render
 
@@ -108,8 +108,8 @@ alias cpu='cat /proc/cpuinfo | grep "model name" | head -1'
 # prompt
 PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '
 
-# start sway if on tty1
-[[ $(tty) = /dev/tty1 ]] && exec sway`,
+# start uwm if on tty1
+[[ $(tty) = /dev/tty1 ]] && exec uwm`,
   },
 
   "/home/ak/.config": {
@@ -166,7 +166,7 @@ require("core.lazy")   -- lazy.nvim plugin manager
 
 "/home/ak/projects": {
     type: "dir",
-    children: ["rythva/", "questlytics/", "http-server/", "yukthi/", "staffo/", "gpad/", "sysdash/", "minimal-launcher/", "others/"],
+    children: ["rythva/", "questlytics/", "http-server/", "yukthi/", "staffo/", "gpad/", "sysdash/", "minimal-launcher/", "uwm/", "others/"],
   },
   "/home/ak/projects/rythva/": { type: "dir", children: ["README.md"] },
   "/home/ak/projects/rythva/README.md": {
@@ -207,6 +207,11 @@ require("core.lazy")   -- lazy.nvim plugin manager
   "/home/ak/projects/minimal-launcher/README.md": {
     type: "file",
     content: "FZF-style terminal launcher for Android. See: project minimallauncher",
+  },
+  "/home/ak/projects/uwm/": { type: "dir", children: ["README.md"] },
+  "/home/ak/projects/uwm/README.md": {
+    type: "file",
+    content: "BSP Wayland compositor built on wlroots. See: project uwm",
   },
   "/home/ak/projects/others/": { type: "dir", children: ["list.txt"] },
   "/home/ak/projects/others/list.txt": {

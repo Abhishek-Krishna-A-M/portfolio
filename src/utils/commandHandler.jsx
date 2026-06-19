@@ -116,7 +116,7 @@ const lines = [
       `             'oiioxkkxxoo'                 Packages: 759 (pacman)`,
       `            ':;:iiiioxxxoo'                Shell: bash 5.3.9`,
       `               \`'.;::ioxxoo'               Display: 1366x768 (15")`,
-      `          '-.      \`':;jiooo'              WM: sway (Wayland)`,
+      `          '-.      \`':;jiooo'              WM: uwm (Wayland)`,
       `         'oooio-..     \`'i:io'             Init System: runit`,
       `        'ooooxxxxoio:,.  \`'-;'             Terminal: foot`,
       `       'ooooxxxxxkkxoooIi:-.  \`'           CPU: Intel(R) Core(TM) i3-5005U (4)`,

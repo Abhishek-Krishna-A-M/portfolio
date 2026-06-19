@@ -6,7 +6,7 @@ const BOOT_STEPS = [
   { t: 100,  ok: false, dim: true,  text: "" },
   { t: 160,  ok: true,             text: "loading kernel 7.0.11-zen1-1-zen" },
   { t: 340,  ok: true,             text: "mounting filesystem (ext4)" },
-  { t: 500,  ok: true,             text: "starting sway" },
+  { t: 500,  ok: true,             text: "starting uwm" },
   { t: 630,  ok: true,             text: "starting foot" },
   { t: 750,  ok: true,             text: "loading wayland" },
   { t: 900,  ok: true,             text: "importing projects.db" },

@@ -145,6 +145,20 @@ export const projectsData = {
     ],
     links: { github: "https://github.com/Abhishek-Krishna-A-M/U_Vim" },
   },
+  uwm: {
+    title: "UWM",
+    icon: "▣",
+    short: "BSP Wayland compositor — C (wlroots)",
+    featured: true,
+    details: [
+      "Lightweight BSP tiling Wayland compositor built on wlroots",
+      "Tabbed containers, floating windows, monocle, and BSP layout",
+      "Multi-monitor hotplug support (extend, mirror, auto-arrange)",
+      "Unfocus dimming and per-window opacity rules",
+      "Custom UWM bar protocol (zwp_uwm_bar_v1)",
+    ],
+    links: { github: "https://github.com/Abhishek-Krishna-A-M/UWM" },
+  },
   securefilelocker: {
     title: "SecureFileLocker",
     icon: "■",
@@ -222,7 +236,7 @@ tab → autocomplete   ↑↓ → history`;
 export const ABOUT_TEXT = `NAME    : Abhishek Krishna
 ROLE    : Systems & Backend Engineer
 OS      : Artix Linux (runit)
-WM      : sway + foot
+WM      : uwm (Wayland)
 SHELL   : bash / Go / C
 EDITOR  : Neovim (Custom Lua)
 MACHINE : Acer Aspire | 4GB RAM | Optimization-first
@@ -242,7 +256,7 @@ TRACK RECORD:
 
 Offline: Ricing TUIs · Bodyweight training · Exploring deterministic systems
 ────────────────────────────────────────────────────────────
-cat ~/.config/sway/config     ← real config
+cat ~/.config/uwm/config.h    ← real config
 cat /proc/version              ← real kernel`;
 
 export const SKILLS_TEXT = `[ Systems & Core ]
@@ -261,7 +275,7 @@ export const SKILLS_TEXT = `[ Systems & Core ]
   Responsive Design (Zero-JS logic)
 
 [ Development Workflow ]
-  Neovim (Custom Lua IDE) · sway · foot
+  Neovim (Custom Lua IDE) · uwm · foot
   Aggressive RAM Optimization · TUI Design
   CI/CD (GitHub Actions) · Vercel · Render
 
