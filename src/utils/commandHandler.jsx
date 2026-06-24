@@ -1,6 +1,6 @@
-import { projectsData, HELP_TEXT, ABOUT_TEXT, SKILLS_TEXT, CONTACT_TEXT } from "../commands/commands";
-import { fsLs, fsCat, fsCd, fsTree, HOME } from "../filesystem/fsCommands";
-import { themes } from "../themes/themes";
+import { projectsData, HELP_TEXT, ABOUT_TEXT, SKILLS_TEXT, CONTACT_TEXT, WEBERNYX_TEXT } from "../data/commands.js";
+import { fsLs, fsCat, fsCd, fsTree, HOME } from "../data/fsCommands.js";
+import { themes } from "../data/themes.js";
 
 export const T = {
   text:    (s)    => ({ type: "text",    text: s }),

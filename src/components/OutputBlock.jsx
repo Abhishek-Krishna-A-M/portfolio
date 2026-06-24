@@ -1,18 +1,18 @@
-import { useTheme } from "../themes/ThemeContext";
-import GlitchText from "./GlitchText";
+import { themes } from "../data/themes.js";
+import GlitchText from "./GlitchText.jsx";
 
 export default function OutputBlock({ results }) {
-  const { theme } = useTheme();
   if (!results || results.length === 0) return null;
 
   return (
     <div style={{ marginTop: "2px" }}>
-      {results.map((r, i) => <ResultLine key={i} r={r} theme={theme} />)}
+      {results.map((r, i) => <ResultLine key={i} r={r} />)}
     </div>
   );
 }
 
-function ResultLine({ r, theme }) {
+function ResultLine({ r }) {
+  const theme = themes.void;
   const base = {
     fontFamily: theme.fontFamily,
     whiteSpace: "pre-wrap",

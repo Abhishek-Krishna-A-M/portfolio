@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import { useTheme } from "../themes/ThemeContext";
+import { themes } from "../data/themes.js";
 
 const BOOT_STEPS = [
   { t: 0,    ok: false, dim: true,  text: "BIOS V1.15  —  Acer  —  Aspire E5-573" },
@@ -22,7 +22,7 @@ const BANNER = `  \u2584\u2580\u2584 \u2588\u2584\u2580   \u2584\u2580\u2580 \u2
   \u2588\u2580\u2588 \u2588 \u2588   \u2584\u2588\u2588 \u2588 \u2588 \u2588\u2584\u2584 \u2588\u2584\u2584 \u2588\u2584\u2584`;
 
 export default function BootSequence({ onFinish }) {
-  const { theme } = useTheme();
+  const theme = themes.void;
   const [steps, setSteps]   = useState([]);
   const [banner, setBanner] = useState(false);
 

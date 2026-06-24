@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useTheme } from "../themes/ThemeContext";
+import { themes } from "../data/themes.js";
 
 const GLITCH_CHARS = "█▓▒░╔╗╚╝║═╠╣╦╩╬▄▀■□▪▫◆◇○●";
 
@@ -12,7 +12,7 @@ function randomGlitch(str) {
 }
 
 export default function GlitchText({ text }) {
-  const { theme } = useTheme();
+  const theme = themes.void;
   const [display, setDisplay] = useState(() => randomGlitch(text));
   const [settled, setSettled] = useState(false);
   const [iteration, setIteration] = useState(0);

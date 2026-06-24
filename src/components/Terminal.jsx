@@ -1,16 +1,18 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { useTheme } from "../themes/ThemeContext";
-import { handle, handleSudo, T } from "../utils/commandHandler";
-import InputLine from "./InputLine";
-import OutputBlock from "./OutputBlock";
-import KernelPanic from "./KernelPanic";
-import { HOME } from "../filesystem/fsCommands";
+import { themes } from "../data/themes.js";
+import { handle, handleSudo, T } from "../utils/commandHandler.jsx";
+import InputLine from "./InputLine.jsx";
+import OutputBlock from "./OutputBlock.jsx";
+import KernelPanic from "./KernelPanic.jsx";
+import BootSequence from "./BootSequence.jsx";
+import { HOME } from "../data/fsCommands.js";
 
 const SUDO_PASS = "akiscool";
-const HINT = "try: help  ·  about  ·  projects  ·  panic";
+const HINT = "try: help  \u00b7  about  \u00b7  projects  \u00b7  webernyx  \u00b7  panic";
 
 export default function Terminal() {
-  const { theme, setTheme } = useTheme();
+  const theme = themes.void;
+  const [booted, setBooted]           = useState(false);
   const [entries, setEntries]         = useState([]);
   const [cwd, setCwd]                 = useState(HOME);
   const [isSudo, setIsSudo]           = useState(false);
@@ -25,8 +27,7 @@ export default function Terminal() {
   const bottomRef = useRef(null);
   const inputRef  = useRef(null);
 
-  // Auto-focus on mount
-  useEffect(() => { inputRef.current?.focus(); }, []);
+  useEffect(() => { inputRef.current?.focus(); }, [booted]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -60,9 +61,8 @@ export default function Terminal() {
 
     const cmd = (raw || "").trim();
 
-    // ── password phase ──────────────────────────────────────────────
     if (awaitPass) {
-      const masked = cmd.length ? "•".repeat(cmd.length) : "•";
+      const masked = cmd.length ? "\u2022".repeat(cmd.length) : "\u2022";
       push(masked, [], { isPassword: true });
       setTimeout(() => {
         if (cmd === SUDO_PASS) {
@@ -92,7 +92,7 @@ export default function Terminal() {
       if (r.type === "clear")   { setEntries([]); return; }
       if (r.type === "panic")   { setShowPanic(true); push(cmd, [], { cwd }); return; }
       if (r.type === "cd")      { newCwd = r.path; continue; }
-      if (r.type === "theme")   { setTheme(r.name); continue; }
+      if (r.type === "theme")   { continue; }
       if (r.type === "history") {
         finalResults.push(T.text(
           history.length === 0
@@ -113,7 +113,7 @@ export default function Terminal() {
 
     setCwd(newCwd);
     push(cmd, finalResults, { cwd });
-  }, [awaitPass, pendingSudo, cwd, isSudo, history, histIdx, sessionStart, setTheme, push]);
+  }, [awaitPass, pendingSudo, cwd, isSudo, history, histIdx, sessionStart, push]);
 
   const handlePanicRecover = useCallback(() => {
     setShowPanic(false);
@@ -121,11 +121,14 @@ export default function Terminal() {
     setTimeout(() => inputRef.current?.focus(), 100);
   }, [push]);
 
+  if (!booted) {
+    return <BootSequence onFinish={() => setBooted(true)} />;
+  }
+
   return (
     <>
       {showPanic && <KernelPanic onRecover={handlePanicRecover} />}
 
-      {/* Pure TTY — no window, no borders, full bleed black */}
       <div
         onClick={focus}
         style={{
@@ -142,7 +145,6 @@ export default function Terminal() {
           boxSizing: "border-box",
         }}
       >
-        {/* Hacker scanlines only */}
         {theme.scanlines && (
           <div style={{
             position: "fixed", inset: 0,
@@ -151,7 +153,6 @@ export default function Terminal() {
           }} />
         )}
 
-        {/* Welcome line — subtle, like a motd */}
         <div style={{
           color: theme.textMuted,
           marginBottom: "1.2rem",
@@ -160,11 +161,10 @@ export default function Terminal() {
           paddingBottom: "0.8rem",
         }}>
           <span style={{ color: theme.accent, fontWeight: 700 }}>ak@portfolio</span>
-          {"  —  portfolio shell v2.0  —  "}
+          {"  \u2014  portfolio shell v2.0  \u2014  "}
           <span style={{ color: theme.textMuted }}>{HINT}</span>
         </div>
 
-        {/* Command entries */}
         {entries.map((e, i) => (
           <div key={i} style={{
             marginBottom: "0.6rem",
@@ -200,7 +200,6 @@ export default function Terminal() {
 
         <div ref={bottomRef} />
 
-        {/* Live input */}
         <InputLine
           ref={inputRef}
           prefix={prompt}
@@ -208,19 +207,8 @@ export default function Terminal() {
           value={inputVal}
           onChange={setInputVal}
           onCommand={exec}
-          placeholder={!awaitPass &&!inputVal ? "stuck? → try 'help'" : ""}
+          placeholder={!awaitPass && !inputVal ? "stuck? \u2192 try 'help'" : ""}
         />
-
-{/* Mobile hint — bottom of page, not a footer bar */}
-        <div style={{
-          marginTop: "3rem",
-          color: theme.textMuted,
-          fontSize: "0.6rem",
-          letterSpacing: "0.06em",
-          opacity: 0.5,
-        }}>
-          tab: autocomplete  ·  ↑↓: history  ·  double-enter: autocomplete (mobile)
-        </div>
 
         <style>{`
           @keyframes ei {

@@ -1,5 +1,5 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
-import { useTheme } from "../themes/ThemeContext";
+import { themes } from "../data/themes.js";
 
 const COMPLETIONS = [
   "about", "skills", "projects", "project ", "contact", "help",
@@ -20,10 +20,10 @@ function autocomplete(input) {
 }
 
 const InputLine = forwardRef(function InputLine(
-  { onCommand, mask = false, prefix, disabled = false, value, onChange, placeholder }, 
+  { onCommand, mask = false, prefix, disabled = false, value, onChange, placeholder },
   ref
 ) {
-  const { theme } = useTheme();
+  const theme = themes.void;
   const inputRef = useRef(null);
   const lastEnter = useRef(0);
 

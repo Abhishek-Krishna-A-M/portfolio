@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTheme } from "../themes/ThemeContext";
+import { themes } from "../data/themes.js";
 
 const PANIC_LINES = [
   { t: 0,    text: "" },
@@ -40,7 +40,7 @@ const PANIC_LINES = [
 ];
 
 export default function KernelPanic({ onRecover }) {
-  const { theme } = useTheme();
+  const theme = themes.void;
   const [lines, setLines] = useState([]);
   const [phase, setPhase] = useState("panic"); // panic | recovering | done
 
