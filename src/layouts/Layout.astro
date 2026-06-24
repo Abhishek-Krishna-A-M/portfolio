@@ -1,0 +1,124 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  canonical?: string;
+}
+
+const { title, description, ogImage = '/logo_ak_transparent.png', canonical } = Astro.props;
+const siteUrl = 'https://abhishek.webernyx.in';
+const fullUrl = canonical || `${siteUrl}${Astro.url.pathname}`;
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${siteUrl}/#person`,
+      "name": "Abhishek Krishna",
+      "alternateName": "AK",
+      "url": siteUrl,
+      "image": `${siteUrl}/my-ascii-photo.png`,
+      "jobTitle": "Systems & Backend Engineer",
+      "description": "Systems and backend engineer specializing in high-concurrency backends, systems programming, and Linux internals. Founder & CTO of Webernyx.",
+      "email": "abhishekkrishna2k6@gmail.com",
+      "sameAs": [
+        "https://github.com/Abhishek-Krishna-A-M",
+        "https://linkedin.com/in/abhishek-krishna-a-m-137895328",
+        "https://webernyx.in"
+      ],
+      "knowsAbout": [
+        "Systems Programming",
+        "Backend Engineering",
+        "C",
+        "Go",
+        "C++",
+        "Kotlin",
+        "Node.js",
+        "PostgreSQL",
+        "Supabase",
+        "Linux",
+        "Wayland",
+        "High-Concurrency Systems"
+      ],
+      "worksFor": {
+        "@type": "Organization",
+        "@id": "https://webernyx.in/#org",
+        "name": "Webernyx",
+        "url": "https://webernyx.in"
+      },
+      "founder": {
+        "@type": "Organization",
+        "@id": "https://webernyx.in/#org"
+      },
+      "alumniOf": {
+        "@type": "EducationalOrganization",
+        "name": "SJCET"
+      },
+      "nationality": {
+        "@type": "Country",
+        "name": "India"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      "url": siteUrl,
+      "name": "Abhishek Krishna — Systems & Backend Engineer",
+      "description": "A terminal portfolio. Not a website. A system.",
+      "publisher": { "@id": `${siteUrl}/#person` },
+      "author": { "@id": `${siteUrl}/#person` }
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#000000" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="keywords" content="Abhishek Krishna, Systems Engineer, Backend Engineer, C, C++, Go, Node.js, Supabase, React, Linux, Artix, Webernyx" />
+    <meta name="author" content="Abhishek Krishna" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large" />
+    <link rel="canonical" href={fullUrl} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={fullUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+    <meta property="og:site_name" content="Abhishek Krishna" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Phosphor Icons -->
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.2/src/bold/style.css" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/logo_ak_transparent.png" />
+
+    <!-- Schema.org -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

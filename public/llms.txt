@@ -1,0 +1,23 @@
+# Abhishek Krishna
+
+## Identity
+Abhishek Krishna — Systems & Backend Engineer, Founder & CTO of Webernyx (webernyx.in)
+
+## Expertise
+- High-Concurrency Backends (Go, Node.js, Supabase)
+- Systems Programming (C, POSIX Sockets, Multi-threading)
+- Linux Internals (Artix/runit, Wayland compositors)
+- Database Architecture (PostgreSQL, Views, RLS)
+
+## Notable Projects
+- Rythva: Scaled to 70,000+ requests under live load
+- Staffo: Campus-scale staff availability system
+- UWM: BSP Wayland compositor built on wlroots
+- gpad: Git-powered CLI notes manager in Go
+- HTTP Server: Multi-threaded HTTP/1.1 server in C
+
+## Contact
+- Email: abhishekkrishna2k6@gmail.com
+- GitHub: https://github.com/Abhishek-Krishna-A-M
+- LinkedIn: https://linkedin.com/in/abhishek-krishna-a-m-137895328
+- Company: https://webernyx.in

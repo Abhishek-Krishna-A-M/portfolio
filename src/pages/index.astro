@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Terminal from '../components/Terminal.jsx';
+---
+
+<Layout
+  title="Abhishek Krishna — Systems & Backend Engineer | Founder & CTO, Webernyx"
+  description="Systems and backend engineer. Artix Linux. Wayland. Neovim. Founder & CTO of Webernyx. Builds systems close to the metal — C, C++, Go, Node.js, Supabase."
+>
+  <noscript>
+    <main style="font-family:'IBM Plex Mono',monospace;padding:2rem;background:#000;color:#e2e8f0;min-height:100vh;max-width:800px;margin:0 auto;line-height:1.6">
+      <h1 style="font-size:1.5rem;margin-bottom:0.5rem">
+        <i class="ph-bold ph-terminal-window" style="margin-right:0.5rem;color:#e2e8f0"></i>
+        Abhishek Krishna — Systems &amp; Backend Engineer
+      </h1>
+      <p style="color:#94a3b8;margin-bottom:2rem">
+        Founder &amp; CTO of <a href="https://webernyx.in" style="color:#e2e8f0;text-decoration:underline">Webernyx</a> · Artix Linux · Wayland · Neovim
+      </p>
+
+      <section style="margin-bottom:2rem">
+        <h2 style="font-size:1rem;color:#e2e8f0;margin-bottom:0.5rem">
+          <i class="ph-bold ph-code" style="margin-right:0.5rem"></i>Skills
+        </h2>
+        <p style="color:#94a3b8">C · C++ · Go · Kotlin · Node.js · React · Supabase · PostgreSQL</p>
+      </section>
+
+      <section style="margin-bottom:2rem">
+        <h2 style="font-size:1rem;color:#e2e8f0;margin-bottom:0.5rem">
+          <i class="ph-bold ph-folder-open" style="margin-right:0.5rem"></i>Projects
+        </h2>
+        <ul style="list-style:none;padding:0;color:#94a3b8">
+          <li style="margin-bottom:0.5rem">
+            <i class="ph-bold ph-link" style="margin-right:0.5rem;color:#64748b"></i>
+            <a href="https://github.com/Abhishek-Krishna-A-M/HTTP_Server" style="color:#e2e8f0;text-decoration:underline">HTTP Server in C</a> — multi-threaded, raw sockets
+          </li>
+          <li style="margin-bottom:0.5rem">
+            <i class="ph-bold ph-link" style="margin-right:0.5rem;color:#64748b"></i>
+            <a href="https://github.com/Abhishek-Krishna-A-M/sysdash" style="color:#e2e8f0;text-decoration:underline">SysDash</a> — TUI system monitor in C++
+          </li>
+          <li style="margin-bottom:0.5rem">
+            <i class="ph-bold ph-link" style="margin-right:0.5rem;color:#64748b"></i>
+            <a href="https://github.com/Abhishek-Krishna-A-M/gpad" style="color:#e2e8f0;text-decoration:underline">gpad</a> — git-powered CLI notes manager in Go
+          </li>
+          <li style="margin-bottom:0.5rem">
+            <i class="ph-bold ph-link" style="margin-right:0.5rem;color:#64748b"></i>
+            <a href="https://github.com/Abhishek-Krishna-A-M/minimal-launcher" style="color:#e2e8f0;text-decoration:underline">Minimal Launcher</a> — Android launcher in Kotlin
+          </li>
+          <li style="margin-bottom:0.5rem">
+            <i class="ph-bold ph-link" style="margin-right:0.5rem;color:#64748b"></i>
+            <a href="https://github.com/Abhishek-Krishna-A-M/Staffo" style="color:#e2e8f0;text-decoration:underline">Staffo</a> — campus staff locator (React + Supabase)
+          </li>
+        </ul>
+      </section>
+
+      <section style="margin-bottom:2rem">
+        <h2 style="font-size:1rem;color:#e2e8f0;margin-bottom:0.5rem">
+          <i class="ph-bold ph-envelope" style="margin-right:0.5rem"></i>Contact
+        </h2>
+        <p style="color:#94a3b8">
+          <i class="ph-bold ph-envelope-simple" style="margin-right:0.3rem;color:#64748b"></i>
+          <a href="mailto:abhishekkrishna2k6@gmail.com" style="color:#e2e8f0;text-decoration:underline">abhishekkrishna2k6@gmail.com</a>
+          <br />
+          <i class="ph-bold ph-github-logo" style="margin-right:0.3rem;color:#64748b"></i>
+          <a href="https://github.com/Abhishek-Krishna-A-M" style="color:#e2e8f0;text-decoration:underline">github.com/Abhishek-Krishna-A-M</a>
+          <br />
+          <i class="ph-bold ph-linkedin-logo" style="margin-right:0.3rem;color:#64748b"></i>
+          <a href="https://linkedin.com/in/abhishek-krishna-a-m-137895328" style="color:#e2e8f0;text-decoration:underline">LinkedIn</a>
+          <br />
+          <i class="ph-bold ph-buildings" style="margin-right:0.3rem;color:#64748b"></i>
+          <a href="https://webernyx.in" style="color:#e2e8f0;text-decoration:underline">Webernyx</a>
+        </p>
+      </section>
+
+      <p style="color:#334155;font-size:0.75rem;margin-top:3rem;border-top:1px solid rgba(226,232,240,0.08);padding-top:1rem">
+        Enable JavaScript for the full terminal experience.
+      </p>
+    </main>
+  </noscript>
+
+  <Terminal client:load />
+</Layout>
