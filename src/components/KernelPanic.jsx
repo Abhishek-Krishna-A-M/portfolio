@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { themes } from "../data/themes.js";
 
 const PANIC_LINES = [
   { t: 0,    text: "" },
@@ -39,19 +38,16 @@ const PANIC_LINES = [
   { t: 2000, text: "[  OK  ] type 'help' to continue." },
 ];
 
-export default function KernelPanic({ onRecover }) {
-  const theme = themes.void;
+export default function KernelPanic({ theme, onRecover }) {
   const [lines, setLines] = useState([]);
-  const [phase, setPhase] = useState("panic"); // panic | recovering | done
 
   useEffect(() => {
     const timers = PANIC_LINES.map((l) =>
       setTimeout(() => setLines((p) => [...p, l.text]), l.t)
     );
-    const recoverT = setTimeout(() => setPhase("recovering"), 1000);
-    const doneT    = setTimeout(() => { setPhase("done"); onRecover(); }, 2200);
+    const doneT = setTimeout(() => { onRecover(); }, 2200);
 
-    return () => { timers.forEach(clearTimeout); clearTimeout(recoverT); clearTimeout(doneT); };
+    return () => { timers.forEach(clearTimeout); clearTimeout(doneT); };
   }, [onRecover]);
 
   const isCritical = (line) =>

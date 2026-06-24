@@ -1,4 +1,4 @@
-import { projectsData, HELP_TEXT, ABOUT_TEXT, SKILLS_TEXT, CONTACT_TEXT, WEBERNYX_TEXT } from "../data/commands.js";
+import { projectsData, HELP_TEXT, ABOUT_TEXT, SKILLS_TEXT, WEBERNYX_TEXT } from "../data/commands.js";
 import { fsLs, fsCat, fsCd, fsTree, HOME } from "../data/fsCommands.js";
 import { themes } from "../data/themes.js";
 
@@ -34,8 +34,17 @@ export function handle(raw, { cwd = HOME, isSudo = false, sessionStart } = {}) {
   // ── portfolio ────────────────────────────────────────────────────
   if (lower === "about")   return [T.text(ABOUT_TEXT)];
   if (lower === "skills")  return [T.text(SKILLS_TEXT)];
-  if (lower === "contact") return [T.text(CONTACT_TEXT)];
   if (lower === "help")    return [T.text(HELP_TEXT)];
+  if (lower === "webernyx") return [T.text(WEBERNYX_TEXT)];
+  if (lower === "contact") return [
+    T.text("─────────────────────────────────────"),
+    T.link("  email     abhishekkrishna2k6@gmail.com", "mailto:abhishekkrishna2k6@gmail.com"),
+    T.link("  github    github.com/Abhishek-Krishna-A-M", "https://github.com/Abhishek-Krishna-A-M"),
+    T.link("  linkedin  linkedin.com/in/abhishek-krishna-a-m-137895328", "https://linkedin.com/in/abhishek-krishna-a-m-137895328"),
+    T.link("  company   webernyx.in", "https://webernyx.in"),
+    T.link("  whatsapp  +918075656775", "https://wa.me/918075656775"),
+    T.dim("  sudo message \"hi\" → opens WhatsApp"),
+  ];
 
   if (lower === "projects") {
     const feat = Object.entries(projectsData).filter(([,v]) => v.featured);

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { themes } from "../data/themes.js";
+import { themes, defaultTheme } from "../data/themes.js";
 import { handle, handleSudo, T } from "../utils/commandHandler.jsx";
 import InputLine from "./InputLine.jsx";
 import OutputBlock from "./OutputBlock.jsx";
@@ -10,8 +10,14 @@ import { HOME } from "../data/fsCommands.js";
 const SUDO_PASS = "akiscool";
 const HINT = "try: help  \u00b7  about  \u00b7  projects  \u00b7  webernyx  \u00b7  panic";
 
+function getInitialTheme() {
+  try { return localStorage.getItem("ak-theme") || defaultTheme; }
+  catch { return defaultTheme; }
+}
+
 export default function Terminal() {
-  const theme = themes.void;
+  const [themeName, setThemeName]     = useState(getInitialTheme);
+  const theme = themes[themeName] || themes[defaultTheme];
   const [booted, setBooted]           = useState(false);
   const [entries, setEntries]         = useState([]);
   const [cwd, setCwd]                 = useState(HOME);
@@ -32,6 +38,13 @@ export default function Terminal() {
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [entries]);
+
+  const switchTheme = useCallback((name) => {
+    if (themes[name]) {
+      setThemeName(name);
+      try { localStorage.setItem("ak-theme", name); } catch {}
+    }
+  }, []);
 
   const focus = () => inputRef.current?.focus();
 
@@ -92,7 +105,7 @@ export default function Terminal() {
       if (r.type === "clear")   { setEntries([]); return; }
       if (r.type === "panic")   { setShowPanic(true); push(cmd, [], { cwd }); return; }
       if (r.type === "cd")      { newCwd = r.path; continue; }
-      if (r.type === "theme")   { continue; }
+      if (r.type === "theme")   { switchTheme(r.name); continue; }
       if (r.type === "history") {
         finalResults.push(T.text(
           history.length === 0
@@ -113,7 +126,7 @@ export default function Terminal() {
 
     setCwd(newCwd);
     push(cmd, finalResults, { cwd });
-  }, [awaitPass, pendingSudo, cwd, isSudo, history, histIdx, sessionStart, push]);
+  }, [awaitPass, pendingSudo, cwd, isSudo, history, histIdx, sessionStart, push, switchTheme]);
 
   const handlePanicRecover = useCallback(() => {
     setShowPanic(false);
@@ -127,7 +140,7 @@ export default function Terminal() {
 
   return (
     <>
-      {showPanic && <KernelPanic onRecover={handlePanicRecover} />}
+      {showPanic && <KernelPanic theme={theme} onRecover={handlePanicRecover} />}
 
       <div
         onClick={focus}
@@ -194,7 +207,7 @@ export default function Terminal() {
                 <span style={{ color: theme.textDim, wordBreak: "break-all" }}>{e.cmd}</span>
               </div>
             )}
-            <OutputBlock results={e.results} />
+            <OutputBlock results={e.results} theme={theme} />
           </div>
         ))}
 
@@ -207,6 +220,7 @@ export default function Terminal() {
           value={inputVal}
           onChange={setInputVal}
           onCommand={exec}
+          theme={theme}
           placeholder={!awaitPass && !inputVal ? "stuck? \u2192 try 'help'" : ""}
         />
 

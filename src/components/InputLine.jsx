@@ -1,8 +1,7 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
-import { themes } from "../data/themes.js";
 
 const COMPLETIONS = [
-  "about", "skills", "projects", "project ", "contact", "help",
+  "about", "skills", "projects", "project ", "contact", "help", "webernyx",
   "ls", "cat ", "cd ", "tree", "pwd",
   "fastfetch", "neofetch", "uptime", "history", "clear", "panic",
   "theme ", "theme void", "theme gruvbox", "theme nord", "theme hacker",
@@ -20,10 +19,9 @@ function autocomplete(input) {
 }
 
 const InputLine = forwardRef(function InputLine(
-  { onCommand, mask = false, prefix, disabled = false, value, onChange, placeholder },
+  { onCommand, mask = false, prefix, disabled = false, value, onChange, placeholder, theme },
   ref
 ) {
-  const theme = themes.void;
   const inputRef = useRef(null);
   const lastEnter = useRef(0);
 
@@ -41,7 +39,6 @@ const InputLine = forwardRef(function InputLine(
     if (e.key === "Enter") {
       const now = Date.now();
       if (now - lastEnter.current < 380) {
-        // double enter — autocomplete on mobile
         const completed = autocomplete(value.trim());
         if (completed !== value.trim()) { onChange(completed); lastEnter.current = 0; return; }
       }

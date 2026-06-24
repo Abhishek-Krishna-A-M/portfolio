@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { themes } from "../data/themes.js";
 
-const GLITCH_CHARS = "█▓▒░╔╗╚╝║═╠╣╦╩╬▄▀■□▪▫◆◇○●";
+const GLITCH_CHARS = "\u2588\u2593\u2592\u2591\u2554\u2557\u255A\u255D\u2551\u2550\u2560\u2563\u2566\u2569\u256C\u2580\u2584\u25A0\u25A1\u25AA\u25AB\u25C6\u25C7\u25CB\u25CF";
 
 function randomGlitch(str) {
   return str.split("").map((c) =>
@@ -11,31 +10,25 @@ function randomGlitch(str) {
   ).join("");
 }
 
-export default function GlitchText({ text }) {
-  const theme = themes.void;
+export default function GlitchText({ text, theme }) {
   const [display, setDisplay] = useState(() => randomGlitch(text));
   const [settled, setSettled] = useState(false);
-  const [iteration, setIteration] = useState(0);
 
   useEffect(() => {
     if (settled) return;
     const maxIterations = 6;
 
     const interval = setInterval(() => {
-      setIteration((prev) => {
-        const next = prev + 1;
-        if (next >= maxIterations) {
+      setDisplay((prev) => {
+        const currentLen = settled ? text.length : prev.length;
+        const next = currentLen;
+        if (next >= text.length) {
           clearInterval(interval);
-          setDisplay(text);
           setSettled(true);
-          return next;
+          return text;
         }
-        // progressively restore from left
         const restoreCount = Math.floor((next / maxIterations) * text.length);
-        setDisplay(
-          text.slice(0, restoreCount) + randomGlitch(text.slice(restoreCount))
-        );
-        return next;
+        return text.slice(0, restoreCount) + randomGlitch(text.slice(restoreCount));
       });
     }, 55);
 

@@ -1,18 +1,16 @@
-import { themes } from "../data/themes.js";
 import GlitchText from "./GlitchText.jsx";
 
-export default function OutputBlock({ results }) {
+export default function OutputBlock({ results, theme }) {
   if (!results || results.length === 0) return null;
 
   return (
     <div style={{ marginTop: "2px" }}>
-      {results.map((r, i) => <ResultLine key={i} r={r} />)}
+      {results.map((r, i) => <ResultLine key={i} r={r} theme={theme} />)}
     </div>
   );
 }
 
-function ResultLine({ r }) {
-  const theme = themes.void;
+function ResultLine({ r, theme }) {
   const base = {
     fontFamily: theme.fontFamily,
     whiteSpace: "pre-wrap",
@@ -35,16 +33,12 @@ function ResultLine({ r }) {
       return <div style={{ ...base, color: theme.warn }}>{r.text}</div>;
 
     case "error":
-      return (
-        <div style={{ ...base, color: theme.error }}>
-          {r.text}
-        </div>
-      );
+      return <div style={{ ...base, color: theme.error }}>{r.text}</div>;
 
     case "glitch":
       return (
         <div style={{ ...base }}>
-          <GlitchText text={r.text} />
+          <GlitchText text={r.text} theme={theme} />
         </div>
       );
 
